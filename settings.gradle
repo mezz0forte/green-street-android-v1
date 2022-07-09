@@ -13,4 +13,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "green-street-android-v1"
-include ':app'
+include ':presentation'
+include ':data'
+include ':domain'
