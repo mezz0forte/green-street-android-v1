@@ -1,12 +1,17 @@
 package kr.hs.dgsw.stac.greenstreet.features.main
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import kr.hs.dgsw.stac.greenstreet.R
+import androidx.activity.viewModels
+import dagger.hilt.android.AndroidEntryPoint
+import kr.hs.dgsw.stac.greenstreet.base.BaseActivity
+import kr.hs.dgsw.stac.greenstreet.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+@AndroidEntryPoint
+class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
+    override val viewModel: MainViewModel by viewModels()
+
+    override fun observerViewModel() {
+
     }
+
+    override fun bindingViewEvent() {}
 }
