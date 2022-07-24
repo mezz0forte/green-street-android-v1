@@ -16,7 +16,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes 
     protected lateinit var mViewModel: VM
     protected abstract val viewModel: VM
 
-    protected abstract fun observerViewModel()
+    protected abstract fun start()
     protected abstract fun bindingViewEvent()
 
     protected open val hasBottomNav: Boolean = false
@@ -32,7 +32,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUp()
-        observerViewModel()
+        start()
         bindingViewEvent()
     }
 

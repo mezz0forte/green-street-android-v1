@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation">
+    android:id="@+id/navigation"
+    app:startDestination="@id/main_home">
+
+    <fragment
+        android:id="@+id/main_home"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.home.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/main_reels"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.reels.ReelsFragment"
+        android:label="ReelsFragment" />
+
 
 </navigation>
