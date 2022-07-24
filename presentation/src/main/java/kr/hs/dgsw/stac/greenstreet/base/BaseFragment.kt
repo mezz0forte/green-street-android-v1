@@ -9,17 +9,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import kr.hs.dgsw.stac.greenstreet.BR
-import kr.hs.dgsw.stac.greenstreet.R
-import java.lang.reflect.ParameterizedType
-import java.util.*
 
-abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
+abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes private val layoutRes: Int) : Fragment() {
 
-    protected lateinit var mBinding: VB
+    protected lateinit var binding: B
     protected lateinit var mViewModel: VM
     protected abstract val viewModel: VM
 
     protected abstract fun observerViewModel()
+    protected abstract fun bindingViewEvent()
 
     protected open val hasBottomNav: Boolean = false
 
@@ -27,57 +25,21 @@ abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding = DataBindingUtil.inflate(
-            inflater,
-            layoutRes(),
-            container
-            , false
-        )!!
-        return mBinding.root
+        binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)!!
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUp()
         observerViewModel()
+        bindingViewEvent()
     }
 
     private fun setUp() {
         mViewModel = if (::mViewModel.isInitialized) mViewModel else viewModel
-        mBinding.setVariable(BR.vm, mViewModel)
-        mBinding.lifecycleOwner = this
-        mBinding.executePendingBindings()
-    }
-
-    /**
-     * Generic Type (Binding) class 를 가져와서 layout 파일명으로 변환 후 자동으로 Layout Resource 를 가져옴
-     *
-     * @return layout resource
-     */
-    @LayoutRes
-    private fun layoutRes(): Int {
-        val split =
-            ((Objects.requireNonNull(javaClass.genericSuperclass) as ParameterizedType).actualTypeArguments[0] as Class<*>)
-                .simpleName.replace("Binding$".toRegex(), "")
-                .split("(?<=.)(?=\\p{Upper})".toRegex())
-                .dropLastWhile { it.isEmpty() }.toTypedArray()
-
-        val name = StringBuilder()
-
-        for (i in split.indices) {
-            name.append(split[i].lowercase(Locale.ROOT))
-            if (i != split.size - 1)
-                name.append("_")
-        }
-
-        try {
-            return R.layout::class.java.getField(name.toString()).getInt(R.layout::class.java)
-        } catch (e: IllegalAccessException) {
-            e.printStackTrace()
-        } catch (e: NoSuchFieldException) {
-            e.printStackTrace()
-        }
-
-        return 0
+        binding.setVariable(BR.vm, mViewModel)
+        binding.lifecycleOwner = this
+        binding.executePendingBindings()
     }
 }

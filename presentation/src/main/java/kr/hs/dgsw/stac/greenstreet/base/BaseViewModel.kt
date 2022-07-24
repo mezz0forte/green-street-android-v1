@@ -8,7 +8,7 @@ import kr.hs.dgsw.stac.greenstreet.widget.Event
 
 open class BaseViewModel : ViewModel() {
 
-    protected val isLoading: MutableLiveData<Boolean> = MediatorLiveData()
+    protected val isLoading = MutableLiveData<Boolean>()
     fun getIsLoading(): LiveData<Boolean> {
         return isLoading
     }
@@ -20,6 +20,4 @@ open class BaseViewModel : ViewModel() {
     fun viewEvent(content: Any) {
         _viewEvent.value = Event(content)
     }
-
-    val onErrorEvent = MutableLiveData<Throwable>()
 }
