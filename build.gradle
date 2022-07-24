@@ -14,7 +14,7 @@ buildscript {
         rxRelayVersion = '3.0.1'
         streamVersion = '1.2.2'
 
-        hiltVersion = '2.38.1'
+        hiltVersion = '2.42'
         ktxVersion = '1.8.0'
 
         constraintLayoutVersion = '2.1.4'
