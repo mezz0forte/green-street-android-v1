@@ -10,7 +10,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
     override val viewModel: MainViewModel by viewModels()
 
     override fun observerViewModel() {
-
+        binding.bnvMain.background = null
 
     }
 
