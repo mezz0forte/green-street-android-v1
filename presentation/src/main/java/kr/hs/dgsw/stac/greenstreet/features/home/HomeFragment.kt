@@ -7,6 +7,7 @@ import kr.hs.dgsw.stac.greenstreet.databinding.FragmentHomeBinding
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home) {
     override val viewModel: HomeViewModel by viewModels()
+    override val hasBottomNav: Boolean = true
 
     override fun start() {
 

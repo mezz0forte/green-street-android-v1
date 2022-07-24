@@ -8,6 +8,7 @@ import kr.hs.dgsw.stac.greenstreet.databinding.FragmentReelsBinding
 
 class ReelsFragment : BaseFragment<FragmentReelsBinding, ReelsViewModel>(R.layout.fragment_reels) {
     override val viewModel: ReelsViewModel by viewModels()
+    override val hasBottomNav: Boolean = true
 
     override fun start() {
 

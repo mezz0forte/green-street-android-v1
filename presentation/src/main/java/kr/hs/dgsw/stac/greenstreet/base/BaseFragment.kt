@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import kr.hs.dgsw.stac.greenstreet.BR
+import kr.hs.dgsw.stac.greenstreet.features.main.MainActivity
 
 abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes private val layoutRes: Int) : Fragment() {
 
@@ -34,6 +35,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes 
         setUp()
         start()
         bindingViewEvent()
+        (activity as? MainActivity)?.setNavVisible(!hasBottomNav)
     }
 
     private fun setUp() {
