@@ -6,9 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import kr.hs.dgsw.stac.greenstreet.BR
-import kr.hs.dgsw.stac.greenstreet.R
-import java.lang.reflect.ParameterizedType
-import java.util.*
 
 abstract class BaseActivity<B : ViewDataBinding, VM: BaseViewModel>(@LayoutRes private val layoutRes: Int) : AppCompatActivity() {
     protected lateinit var binding: B
@@ -16,14 +13,14 @@ abstract class BaseActivity<B : ViewDataBinding, VM: BaseViewModel>(@LayoutRes p
 
     protected abstract val viewModel: VM
 
-    protected abstract fun observerViewModel()
+    protected abstract fun start()
     protected abstract fun bindingViewEvent()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         performDataBinding()
-        observerViewModel()
+        start()
         bindingViewEvent()
     }
 

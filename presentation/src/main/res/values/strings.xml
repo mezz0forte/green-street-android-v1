@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">그린거리</string>
+    <string name="title_home">홈</string>
+    <string name="main_reels">릴스</string>
 </resources>
