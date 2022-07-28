@@ -142,7 +142,5 @@ fabric.properties
 
 !/gradle/wrapper/gradle-wrapper.jar
 
-# importantFile
-res/values/api_key.xml
-
 # End of https://www.toptal.com/developers/gitignore/api/androidstudio
+/presentation/src/main/res/values/api_key.xml
