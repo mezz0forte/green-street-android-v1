@@ -70,26 +70,40 @@ dependencies {
     testImplementation "com.google.dagger:hilt-android-testing:$rootProject.hiltVersion"
     kaptTest "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"
 
+    // retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp3Version"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp3Version"
 
+
+    // glide
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
     kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
 
+
+    // navigation
     implementation "androidx.navigation:navigation-fragment:$rootProject.navigationVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$rootProject.navigationVersion"
 
+
+    // room
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"
     testImplementation "androidx.room:room-testing:$rootProject.roomVersion"
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
     implementation "androidx.room:room-rxjava3:$rootProject.roomVersion"
     implementation "androidx.room:room-guava:$rootProject.roomVersion"
 
+    // circularimageview
     implementation "com.mikhaellopez:circularimageview:$rootProject.circularImageViewVersion"
+
+    // map
+    implementation "com.naver.maps:map-sdk:$rootProject.naverMapVersion"
+
+    // location
+    implementation "com.google.android.gms:play-services-location:$rootProject.googleLocation"
 
     implementation project(":data")
     implementation project(":domain")
