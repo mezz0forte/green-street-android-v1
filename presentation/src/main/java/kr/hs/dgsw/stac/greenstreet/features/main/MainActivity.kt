@@ -1,10 +1,8 @@
 package kr.hs.dgsw.stac.greenstreet.features.main
 
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isInvisible
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -12,6 +10,7 @@ import kr.hs.dgsw.stac.greenstreet.R
 import kr.hs.dgsw.stac.greenstreet.base.BaseActivity
 import kr.hs.dgsw.stac.greenstreet.databinding.ActivityMainBinding
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.activity_main) {
     override val viewModel: MainViewModel by viewModels()
 
