@@ -1,12 +1,17 @@
 package kr.hs.dgsw.stac.greenstreet.features.home
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.viewModels
+import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.LocationTrackingMode
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
+import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.util.FusedLocationSource
+import com.naver.maps.map.util.MarkerIcons
 import dagger.hilt.android.AndroidEntryPoint
+import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.greenstreet.R
 import kr.hs.dgsw.stac.greenstreet.base.BaseFragment
 import kr.hs.dgsw.stac.greenstreet.databinding.FragmentHomeBinding
@@ -48,8 +53,29 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         naverMap.uiSettings.isLocationButtonEnabled = true
         naverMap.maxZoom = 18.0
         naverMap.minZoom = 10.0
+
+        viewModel.getPostingTest()
+        observePostingList()
     }
 
+    private fun observePostingList() {
+        viewModel.postingList.observe(this) { postingList ->
+            setMarker(postingList)
+        }
+    }
+
+    private fun setMarker(postingList: List<Posting>) {
+        postingList.forEach { posting ->
+            naverMap.apply {
+                val marker = Marker()
+                marker.position = LatLng(posting.lat, posting.long)
+                marker.map = naverMap
+                marker.tag = posting.id
+                marker.icon = MarkerIcons.BLACK
+                marker.iconTintColor = Color.GREEN
+            }
+        }
+    }
     override fun bindingViewEvent() {}
 
     // 아래 수명주기 연결

@@ -5,7 +5,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kr.hs.dgsw.stac.domain.repository.PostingRepository
-import kr.hs.dgsw.stac.domain.usecase.post.GetPosting
+import kr.hs.dgsw.stac.domain.usecase.post.GetListPosting
+import kr.hs.dgsw.stac.domain.usecase.post.GetListPostingTest
 import kr.hs.dgsw.stac.domain.usecase.post.PostingUseCases
 import javax.inject.Singleton
 
@@ -17,6 +18,7 @@ class UseCaseModule {
     @Singleton
     fun providePostingUseCases(postingRepository: PostingRepository): PostingUseCases =
         PostingUseCases(
-            getPosting = GetPosting(postingRepository)
+            getListPosting = GetListPosting(postingRepository),
+            getListPostingTest = GetListPostingTest(postingRepository)
         )
 }

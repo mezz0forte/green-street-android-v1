@@ -5,5 +5,6 @@ import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.domain.request.GetPostingRequest
 
 interface PostingRepository {
-    fun getPosting(getPostingRequest: GetPostingRequest): Single<List<Posting>>
+    fun getListPosting(getPostingRequest: GetPostingRequest): Single<List<Posting>>
+    fun getListPostingTest(): Single<List<Posting>>
 }
