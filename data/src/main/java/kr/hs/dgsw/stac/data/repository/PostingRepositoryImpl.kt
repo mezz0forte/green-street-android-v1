@@ -18,6 +18,4 @@ class PostingRepositoryImpl @Inject constructor(
 
     override fun getListPostingTest(): Single<List<Posting>> =
         postingService.getListPostingTest().map { postingMapper.transform(it.data) }
-
-
 }

@@ -7,7 +7,7 @@ data class Posting(
     val title: String,
     val content: String,
     val lat: Double,
-    val long: Double,
+    val lng: Double,
     val status: String,
     val user: User
 )

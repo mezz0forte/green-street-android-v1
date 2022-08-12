@@ -7,8 +7,8 @@ data class PostingDTO(
     @SerializedName("id") val id: Long,
     @SerializedName("title") val title: String,
     @SerializedName("content") val content: String,
-    @SerializedName("latitude") val lat: Double,
-    @SerializedName("longitude") val long: Double,
+    @SerializedName("latitude") val latitude: Double,
+    @SerializedName("longitude") val longitude: Double,
     @SerializedName("status") val status: String,
     @SerializedName("user") val user: User
 )

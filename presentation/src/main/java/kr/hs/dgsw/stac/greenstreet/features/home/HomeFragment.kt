@@ -68,7 +68,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         postingList.forEach { posting ->
             naverMap.apply {
                 val marker = Marker()
-                marker.position = LatLng(posting.lat, posting.long)
+                marker.position = LatLng(posting.lat, posting.lng)
                 marker.map = naverMap
                 marker.tag = posting.id
                 marker.icon = MarkerIcons.BLACK

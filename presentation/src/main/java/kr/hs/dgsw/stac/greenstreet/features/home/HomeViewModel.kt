@@ -1,7 +1,6 @@
 package kr.hs.dgsw.stac.greenstreet.features.home
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kr.hs.dgsw.stac.domain.model.post.Posting
