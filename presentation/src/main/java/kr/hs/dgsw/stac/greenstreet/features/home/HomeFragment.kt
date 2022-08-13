@@ -6,7 +6,6 @@ import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.naver.maps.geometry.LatLng
@@ -14,6 +13,7 @@ import com.naver.maps.map.LocationTrackingMode
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.overlay.Marker
+import com.naver.maps.map.overlay.OverlayImage
 import com.naver.maps.map.util.FusedLocationSource
 import com.naver.maps.map.util.MarkerIcons
 import dagger.hilt.android.AndroidEntryPoint
@@ -80,14 +80,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
 
     private fun setMarker(postingList: List<Posting>) {
         postingList.forEach { posting ->
-            naverMap.apply {
-                val marker = Marker()
-                marker.position = LatLng(posting.lat, posting.lng)
-                marker.map = naverMap
-                marker.tag = posting.id
-                marker.icon = MarkerIcons.BLACK
-                marker.iconTintColor = Color.GREEN
-            }
+            val marker = Marker()
+            marker.position = LatLng(posting.lat, posting.lng)
+            marker.map = naverMap
+            marker.tag = posting.id
+            val markerIcon =
+                if (posting.status == "FINISH")
+                    OverlayImage.fromResource(R.drawable.ic_resolved)
+                else
+                    OverlayImage.fromResource(R.drawable.ic_unresolved)
+            marker.icon = markerIcon
         }
     }
 
@@ -98,17 +100,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         val lon = currentLocation.longitude // 경도
         context?.let {
             val geocoder = Geocoder(it, Locale.KOREA)
-            var addr = "주소 오류"
+            var address = "주소 오류"
             try {
-                val splitedAddr = geocoder.getFromLocation(lat, lon, 1).first().getAddressLine(0).split(" ")
-                addr = "${splitedAddr[1]} ${splitedAddr[2]} ${splitedAddr[3]}"
+                val splitAddress = geocoder.getFromLocation(lat, lon, 1).first().getAddressLine(0).split(" ")
+                address = "${splitAddress[1]} ${splitAddress[2]} ${splitAddress[3]}"
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-            binding.tvLocation.text = addr
+            binding.tvLocation.text = address
         }
     }
-
 
     // 아래 수명주기 연결
     override fun onStart() {
