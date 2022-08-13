@@ -34,7 +34,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
         val viewState = if (demand) View.GONE else View.VISIBLE
         binding.bnvMain.visibility = viewState
         binding.tvWrite.visibility = viewState
-        binding.layoutAppBar.visibility = viewState
     }
 
     private fun defineViewEvent() {

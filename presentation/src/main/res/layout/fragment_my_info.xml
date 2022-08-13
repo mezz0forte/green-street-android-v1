@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.stac.greenstreet.features.myinfo.MyInfoViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/btn_back"
+            android:onClick="@{() -> vm.onClickBack()}"
+            layout="@layout/item_back_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

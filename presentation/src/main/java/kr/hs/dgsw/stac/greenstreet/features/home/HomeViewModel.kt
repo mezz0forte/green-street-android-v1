@@ -35,4 +35,12 @@ class HomeViewModel @Inject constructor(
     private fun onError(error: Throwable) {
         error.printStackTrace()
     }
+
+    fun onClickMyInfo() {
+        viewEvent(EVENT_ON_CLICK_MY_INFO)
+    }
+
+    companion object {
+        const val EVENT_ON_CLICK_MY_INFO = 0
+    }
 }

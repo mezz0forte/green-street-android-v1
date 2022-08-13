@@ -7,7 +7,16 @@
     <fragment
         android:id="@+id/main_map"
         android:name="kr.hs.dgsw.stac.greenstreet.features.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_main_map_to_myInfoFragment"
+            app:destination="@id/myInfoFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/main_map" />
+    </fragment>
     <fragment
         android:id="@+id/main_post"
         android:name="kr.hs.dgsw.stac.greenstreet.features.reels.ReelsFragment"
@@ -20,4 +29,8 @@
         android:id="@+id/addPostFragment"
         android:name="kr.hs.dgsw.stac.greenstreet.features.post.add.AddPostFragment"
         android:label="AddPostFragment" />
+    <fragment
+        android:id="@+id/myInfoFragment"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.myinfo.MyInfoFragment"
+        android:label="MyInfoFragment" />
 </navigation>
