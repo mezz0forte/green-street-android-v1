@@ -1,8 +1,14 @@
 package kr.hs.dgsw.stac.greenstreet.features.home
 
+import android.content.Context.LOCATION_SERVICE
 import android.graphics.Color
+import android.location.Geocoder
+import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.LocationTrackingMode
 import com.naver.maps.map.NaverMap
@@ -15,6 +21,7 @@ import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.greenstreet.R
 import kr.hs.dgsw.stac.greenstreet.base.BaseFragment
 import kr.hs.dgsw.stac.greenstreet.databinding.FragmentHomeBinding
+import java.util.*
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home), OnMapReadyCallback {
@@ -26,6 +33,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     override fun start() {
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.getMapAsync(this)
+
+        bindingViewEvent {
+            when (it) {
+                HomeViewModel.EVENT_ON_CLICK_MY_INFO -> findNavController().navigate(R.id.action_main_map_to_myInfoFragment)
+            }
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -56,6 +69,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
 
         viewModel.getPostingTest()
         observePostingList()
+        setGPSLocation()
     }
 
     private fun observePostingList() {
@@ -74,6 +88,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
                 marker.icon = MarkerIcons.BLACK
                 marker.iconTintColor = Color.GREEN
             }
+        }
+    }
+
+    private fun setGPSLocation() {
+        val locationManager: LocationManager = activity?.getSystemService(LOCATION_SERVICE) as LocationManager
+        val currentLocation: Location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)!!
+        val lat = currentLocation.latitude // 위도
+        val lon = currentLocation.longitude // 경도
+        context?.let {
+            val geocoder = Geocoder(it, Locale.KOREA)
+            var addr = "주소 오류"
+            try {
+                val splitedAddr = geocoder.getFromLocation(lat, lon, 1).first().getAddressLine(0).split(" ")
+                addr = "${splitedAddr[1]} ${splitedAddr[2]} ${splitedAddr[3]}"
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            binding.tvLocation.text = addr
         }
     }
 
