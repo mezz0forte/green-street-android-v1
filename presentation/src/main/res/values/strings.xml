@@ -2,4 +2,8 @@
     <string name="app_name">그린거리</string>
     <string name="title_home">홈</string>
     <string name="main_reels">릴스</string>
+    <string name="text_map">지도</string>
+    <string name="text_post">게시물</string>
+    <string name="text_my_info">내정보</string>
+    <string name="text_add_post">게시물 추가</string>
 </resources>

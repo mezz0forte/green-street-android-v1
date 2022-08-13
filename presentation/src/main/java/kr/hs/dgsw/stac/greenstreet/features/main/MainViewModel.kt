@@ -8,7 +8,12 @@ class MainViewModel : BaseViewModel() {
         viewEvent(EVENT_ON_CLICK_ADD_POST)
     }
 
+    fun onClickUser() {
+        viewEvent(EVENT_ON_CLICK_USER)
+    }
+
     companion object {
         const val EVENT_ON_CLICK_ADD_POST = 0
+        const val EVENT_ON_CLICK_USER = 1
     }
 }

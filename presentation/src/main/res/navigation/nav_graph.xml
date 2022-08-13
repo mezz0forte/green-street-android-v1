@@ -2,14 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation"
-    app:startDestination="@id/main_home">
+    app:startDestination="@id/main_map">
 
     <fragment
-        android:id="@+id/main_home"
+        android:id="@+id/main_map"
         android:name="kr.hs.dgsw.stac.greenstreet.features.home.HomeFragment"
         android:label="HomeFragment" />
     <fragment
-        android:id="@+id/main_reels"
+        android:id="@+id/main_post"
         android:name="kr.hs.dgsw.stac.greenstreet.features.reels.ReelsFragment"
         android:label="ReelsFragment" />
     <activity
@@ -20,6 +20,4 @@
         android:id="@+id/addPostFragment"
         android:name="kr.hs.dgsw.stac.greenstreet.features.post.add.AddPostFragment"
         android:label="AddPostFragment" />
-
-
 </navigation>
