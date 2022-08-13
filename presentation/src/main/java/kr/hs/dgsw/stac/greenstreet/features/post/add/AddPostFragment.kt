@@ -13,17 +13,11 @@ class AddPostFragment : BaseFragment<FragmentAddPostBinding, AddPostViewModel>(R
 
     override fun start() {
 
-    }
 
-    override fun bindingViewEvent() {
-        with(viewModel) {
-            viewEvent.observe(this@AddPostFragment) {
-                it.getContentIfNotHandled()?.let { event ->
-                    when (event) {
-                        AddPostViewModel.EVENT_ON_CLICK_BACK -> {
-                            findNavController().popBackStack()
-                        }
-                    }
+        bindingViewEvent { event ->
+            when (event) {
+                AddPostViewModel.EVENT_ON_CLICK_BACK -> {
+                    findNavController().popBackStack()
                 }
             }
         }

@@ -19,6 +19,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
 
     override fun start() {
         setNav()
+        defineViewEvent()
     }
 
     private fun setNav() {
@@ -36,17 +37,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
         binding.layoutAppBar.visibility = viewState
     }
 
-    override fun bindingViewEvent() {
-        with(viewModel) {
-            viewEvent.observe(this@MainActivity) {
-                it.getContentIfNotHandled()?.let { event ->
-                    when (event) {
-                        MainViewModel.EVENT_ON_CLICK_ADD_POST -> {
-                            navController.navigate(R.id.addPostFragment)
-                        }
-                        MainViewModel.EVENT_ON_CLICK_USER -> {
-                        }
-                    }
+    private fun defineViewEvent() {
+        bindingViewEvent { event ->
+            when (event) {
+                MainViewModel.EVENT_ON_CLICK_ADD_POST -> {
+                    navController.navigate(R.id.addPostFragment)
+                }
+                MainViewModel.EVENT_ON_CLICK_USER -> {
+
                 }
             }
         }

@@ -76,7 +76,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
             }
         }
     }
-    override fun bindingViewEvent() {}
+
 
     // 아래 수명주기 연결
     override fun onStart() {

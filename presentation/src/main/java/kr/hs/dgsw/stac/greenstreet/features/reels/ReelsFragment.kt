@@ -13,8 +13,4 @@ class ReelsFragment : BaseFragment<FragmentReelsBinding, ReelsViewModel>(R.layou
     override fun start() {
 
     }
-
-    override fun bindingViewEvent() {
-
-    }
 }

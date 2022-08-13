@@ -18,7 +18,13 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes 
     protected abstract val viewModel: VM
 
     protected abstract fun start()
-    protected abstract fun bindingViewEvent()
+    protected fun bindingViewEvent(action: (event: Any) -> Unit) {
+        viewModel.viewEvent.observe(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let { event ->
+                action.invoke(event)
+            }
+        }
+    }
 
     protected open val hasBottomNav: Boolean = false
     protected var savedInstanceState: Bundle? = null
@@ -36,7 +42,6 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes 
         this.savedInstanceState = savedInstanceState
         setUp()
         start()
-        bindingViewEvent()
         (activity as? MainActivity)?.setNavVisible(!hasBottomNav)
     }
 

@@ -14,14 +14,19 @@ abstract class BaseActivity<B : ViewDataBinding, VM: BaseViewModel>(@LayoutRes p
     protected abstract val viewModel: VM
 
     protected abstract fun start()
-    protected abstract fun bindingViewEvent()
+    protected fun bindingViewEvent(action: (event: Any) -> Unit) {
+        viewModel.viewEvent.observe(this) {
+            it.getContentIfNotHandled()?.let { event ->
+                action.invoke(event)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         performDataBinding()
         start()
-        bindingViewEvent()
     }
 
     private fun performDataBinding() {
