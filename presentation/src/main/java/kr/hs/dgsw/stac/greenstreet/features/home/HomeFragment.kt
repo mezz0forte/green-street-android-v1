@@ -6,6 +6,7 @@ import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.naver.maps.geometry.LatLng
@@ -19,6 +20,7 @@ import com.naver.maps.map.util.MarkerIcons
 import dagger.hilt.android.AndroidEntryPoint
 import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.greenstreet.R
+import kr.hs.dgsw.stac.greenstreet.adapter.HomePostAdapter
 import kr.hs.dgsw.stac.greenstreet.base.BaseFragment
 import kr.hs.dgsw.stac.greenstreet.databinding.FragmentHomeBinding
 import java.util.*
@@ -29,10 +31,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     override val hasBottomNav: Boolean = true
     private lateinit var naverMap: NaverMap
     private lateinit var locationSource: FusedLocationSource
+    lateinit var homePostingAdapter: HomePostAdapter
 
     override fun start() {
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.getMapAsync(this)
+        setHomePostingRecyclerView()
 
         bindingViewEvent {
             when (it) {
@@ -63,9 +67,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         locationSource = FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE)
         naverMap.locationSource = locationSource
         naverMap.locationTrackingMode = LocationTrackingMode.Follow
-        naverMap.uiSettings.isLocationButtonEnabled = true
         naverMap.maxZoom = 18.0
         naverMap.minZoom = 10.0
+        with(naverMap.uiSettings) {
+            isLocationButtonEnabled = false
+            logoGravity = Gravity.TOP.or(Gravity.END)
+            isZoomControlEnabled = false
+        }
+        binding.locationView.map = naverMap
+
 
         viewModel.getPostingTest()
         observePostingList()
@@ -75,6 +85,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     private fun observePostingList() {
         viewModel.postingList.observe(this) { postingList ->
             setMarker(postingList)
+            homePostingAdapter.submitList(postingList)
         }
     }
 
@@ -109,6 +120,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
             }
             binding.tvLocation.text = address
         }
+    }
+
+    private fun setHomePostingRecyclerView() {
+        homePostingAdapter = HomePostAdapter()
+        binding.rvHomePosting.adapter = homePostingAdapter
     }
 
     // 아래 수명주기 연결
