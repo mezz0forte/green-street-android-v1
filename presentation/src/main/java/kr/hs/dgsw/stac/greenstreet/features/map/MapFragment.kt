@@ -1,4 +1,4 @@
-package kr.hs.dgsw.stac.greenstreet.features.home
+package kr.hs.dgsw.stac.greenstreet.features.map
 
 import android.content.Context.LOCATION_SERVICE
 import android.location.Geocoder
@@ -20,12 +20,12 @@ import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.greenstreet.R
 import kr.hs.dgsw.stac.greenstreet.adapter.HomePostAdapter
 import kr.hs.dgsw.stac.greenstreet.base.BaseFragment
-import kr.hs.dgsw.stac.greenstreet.databinding.FragmentHomeBinding
+import kr.hs.dgsw.stac.greenstreet.databinding.FragmentMapBinding
 import java.util.*
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home), OnMapReadyCallback {
-    override val viewModel: HomeViewModel by viewModels()
+class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.fragment_map), OnMapReadyCallback {
+    override val viewModel: MapViewModel by viewModels()
     override val hasBottomNav: Boolean = true
     private lateinit var naverMap: NaverMap
     private lateinit var locationSource: FusedLocationSource
@@ -38,7 +38,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
 
         bindingViewEvent {
             when (it) {
-                HomeViewModel.EVENT_ON_CLICK_MY_INFO -> findNavController().navigate(R.id.action_main_map_to_myInfoFragment)
+                MapViewModel.EVENT_ON_CLICK_MY_INFO -> findNavController().navigate(R.id.action_main_map_to_myInfoFragment)
             }
         }
     }

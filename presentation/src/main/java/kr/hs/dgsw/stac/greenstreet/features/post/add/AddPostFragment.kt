@@ -5,8 +5,6 @@ import androidx.navigation.fragment.findNavController
 import kr.hs.dgsw.stac.greenstreet.R
 import kr.hs.dgsw.stac.greenstreet.base.BaseFragment
 import kr.hs.dgsw.stac.greenstreet.databinding.FragmentAddPostBinding
-import kr.hs.dgsw.stac.greenstreet.databinding.FragmentHomeBinding
-import kr.hs.dgsw.stac.greenstreet.features.main.MainViewModel
 
 class AddPostFragment : BaseFragment<FragmentAddPostBinding, AddPostViewModel>(R.layout.fragment_add_post) {
     override val viewModel: AddPostViewModel by viewModels()

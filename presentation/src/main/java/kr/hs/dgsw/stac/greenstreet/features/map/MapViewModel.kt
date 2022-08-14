@@ -1,4 +1,4 @@
-package kr.hs.dgsw.stac.greenstreet.features.home
+package kr.hs.dgsw.stac.greenstreet.features.map
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +10,7 @@ import kr.hs.dgsw.stac.greenstreet.base.BaseViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class MapViewModel @Inject constructor(
     private val postingUseCases: PostingUseCases
 ) : BaseViewModel() {
 

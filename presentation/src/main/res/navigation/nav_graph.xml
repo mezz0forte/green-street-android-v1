@@ -6,8 +6,8 @@
 
     <fragment
         android:id="@+id/main_map"
-        android:name="kr.hs.dgsw.stac.greenstreet.features.home.HomeFragment"
-        android:label="HomeFragment" >
+        android:name="kr.hs.dgsw.stac.greenstreet.features.map.MapFragment"
+        android:label="MapFragment" >
         <action
             android:id="@+id/action_main_map_to_myInfoFragment"
             app:destination="@id/myInfoFragment"
@@ -18,17 +18,21 @@
             app:popUpTo="@id/main_map" />
     </fragment>
     <fragment
+        android:id="@+id/addPostFragment"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.post.add.AddPostFragment"
+        android:label="AddPostFragment" />
+    <fragment
         android:id="@+id/main_post"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.post.PostingFragment"
+        android:label="PostingFragment" />
+    <fragment
+        android:id="@+id/realsFragment"
         android:name="kr.hs.dgsw.stac.greenstreet.features.reels.ReelsFragment"
         android:label="ReelsFragment" />
     <activity
         android:id="@+id/mainActivity"
         android:name="kr.hs.dgsw.stac.greenstreet.features.main.MainActivity"
         android:label="MainActivity" />
-    <fragment
-        android:id="@+id/addPostFragment"
-        android:name="kr.hs.dgsw.stac.greenstreet.features.post.add.AddPostFragment"
-        android:label="AddPostFragment" />
     <fragment
         android:id="@+id/myInfoFragment"
         android:name="kr.hs.dgsw.stac.greenstreet.features.myinfo.MyInfoFragment"
