@@ -6,4 +6,7 @@
     <string name="text_post">게시물</string>
     <string name="text_my_info">내정보</string>
     <string name="text_add_post">게시물 추가</string>
+    <string name="text_green_hero">이번주의 그린영웅</string>
+    <string name="text_name_end_point">님</string>
+    <string name="text_dummy_user_name">초록새싹</string>
 </resources>

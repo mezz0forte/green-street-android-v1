@@ -1,7 +1,6 @@
 package kr.hs.dgsw.stac.greenstreet.features.home
 
 import android.content.Context.LOCATION_SERVICE
-import android.graphics.Color
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
@@ -16,7 +15,6 @@ import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.OverlayImage
 import com.naver.maps.map.util.FusedLocationSource
-import com.naver.maps.map.util.MarkerIcons
 import dagger.hilt.android.AndroidEntryPoint
 import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.greenstreet.R
@@ -71,7 +69,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         naverMap.minZoom = 10.0
         with(naverMap.uiSettings) {
             isLocationButtonEnabled = false
-            logoGravity = Gravity.TOP.or(Gravity.END)
+            logoGravity = Gravity.END.or(Gravity.TOP)
+            setLogoMargin(0, 150, 16, 0)
+            isCompassEnabled = false
             isZoomControlEnabled = false
         }
         binding.locationView.map = naverMap
@@ -108,12 +108,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         val locationManager: LocationManager = activity?.getSystemService(LOCATION_SERVICE) as LocationManager
         val currentLocation: Location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)!!
         val lat = currentLocation.latitude // 위도
-        val lon = currentLocation.longitude // 경도
+        val lng = currentLocation.longitude // 경도
         context?.let {
             val geocoder = Geocoder(it, Locale.KOREA)
             var address = "주소 오류"
             try {
-                val splitAddress = geocoder.getFromLocation(lat, lon, 1).first().getAddressLine(0).split(" ")
+                val splitAddress = geocoder.getFromLocation(lat, lng, 1).first().getAddressLine(0).split(" ")
                 address = "${splitAddress[1]} ${splitAddress[2]} ${splitAddress[3]}"
             } catch (e: Exception) {
                 e.printStackTrace()

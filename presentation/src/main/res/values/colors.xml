@@ -20,4 +20,6 @@
     <color name="color_black_text">#262424</color>
 
     <color name="color_menu_unselected">#30000000</color>
+
+    <color name="color_prize">#EFD446</color>
 </resources>

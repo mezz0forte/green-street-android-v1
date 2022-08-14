@@ -27,11 +27,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="15dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="16dp"
                 android:fontFamily="@font/noto_regular"
                 android:includeFontPadding="false"
                 android:textColor="@color/color_black_text"
-                android:textSize="@dimen/title5"
+                android:textSize="@dimen/title4"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -63,6 +63,86 @@
                 app:layout_constraintStart_toStartOf="@id/iv_user"
                 app:layout_constraintTop_toBottomOf="@id/iv_user" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_hero"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="7dp"
+            android:elevation="1dp"
+            android:background="@color/color_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_app_bar">
+
+            <ImageView
+                android:id="@+id/iv_hero"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_award"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_hero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/noto_regular"
+                android:includeFontPadding="false"
+                android:text="@string/text_green_hero"
+                android:textColor="@color/color_black_text"
+                android:textSize="@dimen/title5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_hero"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_name_end_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/noto_regular"
+                android:includeFontPadding="false"
+                android:text="@string/text_name_end_point"
+                android:textColor="@color/color_black_text"
+                android:textSize="@dimen/title5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_hero_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:fontFamily="@font/noto_medium"
+                android:includeFontPadding="false"
+                android:textColor="@color/color_black_text"
+                android:textSize="@dimen/title5"
+                android:text="@string/text_dummy_user_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_name_end_point"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="금현호혜" />
+
+            <ImageView
+                android:id="@+id/iv_hero_profile"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/ic_profile_default"
+                android:layout_marginEnd="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_hero_name"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -71,7 +151,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_app_bar" />
+            app:layout_constraintTop_toBottomOf="@id/layout_app_bar"
+            tools:layout_editor_absoluteX="0dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_home_posting"
@@ -79,19 +160,19 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_home_posting"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:listitem="@layout/item_home_posting" />
 
         <com.naver.maps.map.widget.LocationButtonView
             android:id="@+id/location_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/rv_home_posting"
+            android:layout_marginEnd="12dp"
             android:layout_marginBottom="12dp"
-            android:layout_marginEnd="12dp" />
+            app:layout_constraintBottom_toTopOf="@id/rv_home_posting"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
