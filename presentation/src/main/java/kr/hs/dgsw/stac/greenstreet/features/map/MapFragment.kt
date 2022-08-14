@@ -1,7 +1,6 @@
 package kr.hs.dgsw.stac.greenstreet.features.map
 
 import android.content.Context.LOCATION_SERVICE
-import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
@@ -17,11 +16,13 @@ import com.naver.maps.map.overlay.OverlayImage
 import com.naver.maps.map.util.FusedLocationSource
 import dagger.hilt.android.AndroidEntryPoint
 import kr.hs.dgsw.stac.domain.model.post.Posting
+import kr.hs.dgsw.stac.domain.model.post.PostingInfo
 import kr.hs.dgsw.stac.greenstreet.R
 import kr.hs.dgsw.stac.greenstreet.adapter.HomePostAdapter
 import kr.hs.dgsw.stac.greenstreet.base.BaseFragment
 import kr.hs.dgsw.stac.greenstreet.databinding.FragmentMapBinding
-import java.util.*
+import kr.hs.dgsw.stac.greenstreet.util.myLocationGPSToAddress
+import kr.hs.dgsw.stac.greenstreet.util.postingLocationGPSToAddress
 
 @AndroidEntryPoint
 class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.fragment_map), OnMapReadyCallback {
@@ -79,13 +80,20 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
 
         viewModel.getPostingTest()
         observePostingList()
-        setGPSLocation()
+        setMyGPSAddress()
     }
 
     private fun observePostingList() {
         viewModel.postingList.observe(this) { postingList ->
             setMarker(postingList)
-            homePostingAdapter.submitList(postingList)
+            context?.let {
+                // TODO : image 넣기
+                val postingInfoList: List<PostingInfo> = postingList.map { posting ->
+                    PostingInfo("image", it.postingLocationGPSToAddress(posting.lat, posting.lng))
+                }
+                homePostingAdapter.submitList(postingInfoList)
+            }
+
         }
     }
 
@@ -104,21 +112,13 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
         }
     }
 
-    private fun setGPSLocation() {
+    private fun setMyGPSAddress() {
         val locationManager: LocationManager = activity?.getSystemService(LOCATION_SERVICE) as LocationManager
         val currentLocation: Location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)!!
         val lat = currentLocation.latitude // 위도
         val lng = currentLocation.longitude // 경도
         context?.let {
-            val geocoder = Geocoder(it, Locale.KOREA)
-            var address = "주소 오류"
-            try {
-                val splitAddress = geocoder.getFromLocation(lat, lng, 1).first().getAddressLine(0).split(" ")
-                address = "${splitAddress[1]} ${splitAddress[2]} ${splitAddress[3]}"
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-            binding.tvLocation.text = address
+            binding.tvLocation.text = it.myLocationGPSToAddress(lat, lng)
         }
     }
 

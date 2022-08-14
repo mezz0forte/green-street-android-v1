@@ -6,18 +6,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kr.hs.dgsw.stac.domain.model.post.Posting
+import kr.hs.dgsw.stac.domain.model.post.PostingInfo
 import kr.hs.dgsw.stac.greenstreet.R
-import kr.hs.dgsw.stac.greenstreet.adapter.callback.PostingDiffUtilCallback
+import kr.hs.dgsw.stac.greenstreet.adapter.callback.PostingInfoDiffUtilCallback
 import kr.hs.dgsw.stac.greenstreet.databinding.ItemHomePostingBinding
 
-class HomePostAdapter : ListAdapter<Posting, HomePostAdapter.HomePostViewHolder>(PostingDiffUtilCallback) {
+class HomePostAdapter : ListAdapter<PostingInfo, HomePostAdapter.HomePostViewHolder>(PostingInfoDiffUtilCallback) {
     inner class HomePostViewHolder(val binding: ItemHomePostingBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Posting) {
+        fun bind(item: PostingInfo) {
             // TODO : 1. 서버에서 위치 주소 받거나 GPS 주소로 해독하기 2. 이미지 받기
             binding.posting = item
 
             Glide.with(binding.ivPhoto)
+                //.load(item.image)
                 .load("http://mediahub.seoul.go.kr/wp-content/uploads/2016/10/483b09a867e5beee49765af7423ecbbb.jpg")
                 .error(R.drawable.img_no_image)
                 .centerCrop()
