@@ -4,9 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="posting"
-            type="kr.hs.dgsw.stac.domain.model.post.PostingInfo" />
 
     </data>
 
@@ -67,7 +64,6 @@
                         android:layout_height="0dp"
                         android:layout_marginStart="10dp"
                         android:ellipsize="end"
-                        android:text="@{posting.address}"
                         android:fontFamily="@font/noto_regular"
                         android:gravity="center_vertical"
                         android:maxLines="1"

@@ -8,15 +8,12 @@ import android.view.Gravity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.naver.maps.geometry.LatLng
-import com.naver.maps.map.LocationTrackingMode
-import com.naver.maps.map.NaverMap
-import com.naver.maps.map.OnMapReadyCallback
+import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.OverlayImage
 import com.naver.maps.map.util.FusedLocationSource
 import dagger.hilt.android.AndroidEntryPoint
 import kr.hs.dgsw.stac.domain.model.post.Posting
-import kr.hs.dgsw.stac.domain.model.post.PostingInfo
 import kr.hs.dgsw.stac.greenstreet.R
 import kr.hs.dgsw.stac.greenstreet.adapter.HomePostAdapter
 import kr.hs.dgsw.stac.greenstreet.base.BaseFragment
@@ -30,7 +27,7 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
     override val hasBottomNav: Boolean = true
     private lateinit var naverMap: NaverMap
     private lateinit var locationSource: FusedLocationSource
-    lateinit var homePostingAdapter: HomePostAdapter
+    private lateinit var homePostingAdapter: HomePostAdapter
 
     override fun start() {
         binding.mapView.onCreate(savedInstanceState)
@@ -86,14 +83,7 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
     private fun observePostingList() {
         viewModel.postingList.observe(this) { postingList ->
             setMarker(postingList)
-            context?.let {
-                // TODO : image 넣기
-                val postingInfoList: List<PostingInfo> = postingList.map { posting ->
-                    PostingInfo("image", it.postingLocationGPSToAddress(posting.lat, posting.lng))
-                }
-                homePostingAdapter.submitList(postingInfoList)
-            }
-
+            homePostingAdapter.submitList(postingList)
         }
     }
 
@@ -123,7 +113,10 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
     }
 
     private fun setHomePostingRecyclerView() {
-        homePostingAdapter = HomePostAdapter()
+        homePostingAdapter = HomePostAdapter { latlng ->
+            val cameraUpdate = CameraUpdate.scrollAndZoomTo(latlng, 100.0).animate(CameraAnimation.Easing)
+            naverMap.moveCamera(cameraUpdate)
+        }
         binding.rvHomePosting.adapter = homePostingAdapter
     }
 
