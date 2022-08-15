@@ -2,8 +2,11 @@ package kr.hs.dgsw.stac.greenstreet.features.map
 
 import android.content.Context.LOCATION_SERVICE
 import android.location.Location
+import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
+import android.os.CancellationSignal
+import android.util.Log
 import android.view.Gravity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -20,6 +23,8 @@ import kr.hs.dgsw.stac.greenstreet.base.BaseFragment
 import kr.hs.dgsw.stac.greenstreet.databinding.FragmentMapBinding
 import kr.hs.dgsw.stac.greenstreet.util.myLocationGPSToAddress
 import kr.hs.dgsw.stac.greenstreet.util.postingLocationGPSToAddress
+import java.util.concurrent.Executor
+import java.util.concurrent.Executors
 
 @AndroidEntryPoint
 class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.fragment_map), OnMapReadyCallback {
@@ -40,6 +45,7 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
             }
         }
     }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -72,8 +78,8 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
             isCompassEnabled = false
             isZoomControlEnabled = false
         }
-        binding.locationView.map = naverMap
 
+        binding.locationView.map = naverMap
 
         viewModel.getPostingTest()
         observePostingList()
@@ -102,14 +108,26 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
         }
     }
 
-    private fun setMyGPSAddress() {
-        val locationManager: LocationManager = activity?.getSystemService(LOCATION_SERVICE) as LocationManager
-        val currentLocation: Location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)!!
-        val lat = currentLocation.latitude // 위도
-        val lng = currentLocation.longitude // 경도
+    private val locationListener = LocationListener { location ->
+        Log.d("LocationListenerTest", "실행됨")
         context?.let {
-            binding.tvLocation.text = it.myLocationGPSToAddress(lat, lng)
+            binding.tvLocation.text = it.myLocationGPSToAddress(location.latitude, location.longitude)
         }
+    }
+    private fun setMyGPSAddress() {
+        context?.let { context ->
+            val locationManager: LocationManager = activity?.getSystemService(LOCATION_SERVICE) as LocationManager
+            locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)?.let {
+                binding.tvLocation.text = context.myLocationGPSToAddress(it.latitude, it.longitude)
+            }
+            locationManager.requestLocationUpdates(
+                LocationManager.GPS_PROVIDER,
+                1000L,
+                30f,
+                locationListener
+            )
+        }
+
     }
 
     private fun setHomePostingRecyclerView() {
