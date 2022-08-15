@@ -40,7 +40,12 @@ class MapViewModel @Inject constructor(
         viewEvent(EVENT_ON_CLICK_MY_INFO)
     }
 
+    fun onClickRank() {
+        viewEvent(EVENT_ON_CLICK_RANK)
+    }
+
     companion object {
         const val EVENT_ON_CLICK_MY_INFO = 0
+        const val EVENT_ON_CLICK_RANK = 1
     }
 }

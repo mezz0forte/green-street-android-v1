@@ -1,11 +1,9 @@
 package kr.hs.dgsw.stac.greenstreet.features.map
 
 import android.content.Context.LOCATION_SERVICE
-import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
-import android.os.CancellationSignal
 import android.util.Log
 import android.view.Gravity
 import androidx.fragment.app.viewModels
@@ -22,9 +20,6 @@ import kr.hs.dgsw.stac.greenstreet.adapter.HomePostAdapter
 import kr.hs.dgsw.stac.greenstreet.base.BaseFragment
 import kr.hs.dgsw.stac.greenstreet.databinding.FragmentMapBinding
 import kr.hs.dgsw.stac.greenstreet.util.myLocationGPSToAddress
-import kr.hs.dgsw.stac.greenstreet.util.postingLocationGPSToAddress
-import java.util.concurrent.Executor
-import java.util.concurrent.Executors
 
 @AndroidEntryPoint
 class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.fragment_map), OnMapReadyCallback {
@@ -42,6 +37,7 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
         bindingViewEvent {
             when (it) {
                 MapViewModel.EVENT_ON_CLICK_MY_INFO -> findNavController().navigate(R.id.action_main_map_to_myInfoFragment)
+                MapViewModel.EVENT_ON_CLICK_RANK -> findNavController().navigate(R.id.action_main_map_to_rankFragment)
             }
         }
     }
@@ -105,6 +101,11 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
                 else
                     OverlayImage.fromResource(R.drawable.ic_unresolved)
             marker.icon = markerIcon
+            marker.setOnClickListener {
+                val action = MapFragmentDirections.actionMainMapToDetailPostFragment(it.tag as Long)
+                findNavController().navigate(action)
+                true
+            }
         }
     }
 
