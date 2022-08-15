@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="kr.hs.dgsw.stac.greenstreet.features.post.PostingViewModel" />
+            type="kr.hs.dgsw.stac.greenstreet.features.post.resolve.ResolvePostViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
