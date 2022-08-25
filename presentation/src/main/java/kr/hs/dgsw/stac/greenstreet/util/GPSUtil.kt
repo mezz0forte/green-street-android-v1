@@ -2,7 +2,7 @@ package kr.hs.dgsw.stac.greenstreet.util
 
 import android.content.Context
 import android.location.Geocoder
-import java.util.*
+import java.util.Locale
 
 fun Context.myLocationGPSToAddress(lat: Double, lng: Double): String {
     val geocoder = Geocoder(this, Locale.KOREA)

@@ -42,7 +42,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
                     navController.navigate(R.id.addPostFragment)
                 }
                 MainViewModel.EVENT_ON_CLICK_USER -> {
-
                 }
             }
         }

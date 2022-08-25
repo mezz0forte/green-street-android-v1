@@ -40,5 +40,4 @@ class NetworkModule {
             .baseUrl(Constants.BASE_URL)
             .client(okHttpClient)
             .build()
-
 }

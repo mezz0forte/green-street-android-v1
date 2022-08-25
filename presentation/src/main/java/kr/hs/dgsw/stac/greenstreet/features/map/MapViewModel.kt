@@ -18,7 +18,7 @@ class MapViewModel @Inject constructor(
 
     private fun getPosting() {
         postingUseCases.getListPosting.execute(GetListPosting.Params(36.1231, 123.12414)).toObservable()
-            .map { data ->  data.forEach { Log.d("TestTest", "getPosting: ${it.title}") } }
+            .map { data -> data.forEach { Log.d("TestTest", "getPosting: ${it.title}") } }
             .onErrorReturn { onError(it) }
     }
 

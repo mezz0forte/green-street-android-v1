@@ -17,5 +17,4 @@ abstract class SingleUseCase<R : Any, in P> constructor(
             }
             .doOnError { logger?.logError { it } }
             .doOnSuccess { logger?.log { "${javaClass.simpleName} : $params => $it" } }
-
 }

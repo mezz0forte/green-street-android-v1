@@ -14,7 +14,7 @@ class GetListPosting @Inject constructor(
     private val postingRepository: PostingRepository,
     useCaseScheduler: UseCaseScheduler? = null,
     logger: Logger? = null
-): SingleUseCase<List<Posting>, GetListPosting.Params>(useCaseScheduler, logger) {
+) : SingleUseCase<List<Posting>, GetListPosting.Params>(useCaseScheduler, logger) {
 
     override fun build(params: Params): Single<List<Posting>> {
         val netSingle = postingRepository.getListPosting(GetPostingRequest(params.latitude, params.longitude))

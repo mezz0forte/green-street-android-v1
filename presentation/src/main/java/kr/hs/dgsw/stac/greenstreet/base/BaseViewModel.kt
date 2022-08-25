@@ -1,7 +1,6 @@
 package kr.hs.dgsw.stac.greenstreet.base
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kr.hs.dgsw.stac.greenstreet.widget.Event

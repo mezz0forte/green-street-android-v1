@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import kr.hs.dgsw.stac.greenstreet.BR
 
-abstract class BaseActivity<B : ViewDataBinding, VM: BaseViewModel>(@LayoutRes private val layoutRes: Int) : AppCompatActivity() {
+abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes private val layoutRes: Int) : AppCompatActivity() {
     protected lateinit var binding: B
     protected lateinit var mViewModel: VM
 
@@ -39,6 +39,6 @@ abstract class BaseActivity<B : ViewDataBinding, VM: BaseViewModel>(@LayoutRes p
 
     override fun onDestroy() {
         super.onDestroy()
-        if(::binding.isInitialized) binding.unbind()
+        if (::binding.isInitialized) binding.unbind()
     }
 }

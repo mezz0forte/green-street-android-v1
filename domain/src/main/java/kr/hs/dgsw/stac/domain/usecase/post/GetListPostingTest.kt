@@ -13,7 +13,7 @@ class GetListPostingTest @Inject constructor(
     private val postingRepository: PostingRepository,
     useCaseScheduler: UseCaseScheduler? = null,
     logger: Logger? = null
-): SingleUseCase<List<Posting>, Unit>(useCaseScheduler, logger) {
+) : SingleUseCase<List<Posting>, Unit>(useCaseScheduler, logger) {
 
     override fun build(params: Unit): Single<List<Posting>> {
         val netSingle = postingRepository.getListPostingTest()

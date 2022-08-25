@@ -11,7 +11,6 @@ class AddPostFragment : BaseFragment<FragmentAddPostBinding, AddPostViewModel>(R
 
     override fun start() {
 
-
         bindingViewEvent { event ->
             when (event) {
                 AddPostViewModel.EVENT_ON_CLICK_BACK -> {
