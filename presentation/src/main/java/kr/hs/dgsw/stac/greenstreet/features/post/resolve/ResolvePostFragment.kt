@@ -10,6 +10,5 @@ class ResolvePostFragment : BaseFragment<FragmentResolvePostBinding, ResolvePost
     override val hasBottomNav: Boolean = true
 
     override fun start() {
-
     }
 }

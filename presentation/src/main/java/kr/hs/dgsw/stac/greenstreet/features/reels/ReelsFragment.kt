@@ -10,6 +10,5 @@ class ReelsFragment : BaseFragment<FragmentReelsBinding, ReelsViewModel>(R.layou
     override val hasBottomNav: Boolean = true
 
     override fun start() {
-
     }
 }

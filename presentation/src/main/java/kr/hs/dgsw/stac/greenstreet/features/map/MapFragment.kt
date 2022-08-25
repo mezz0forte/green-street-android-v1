@@ -9,7 +9,11 @@ import android.view.Gravity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.naver.maps.geometry.LatLng
-import com.naver.maps.map.*
+import com.naver.maps.map.CameraAnimation
+import com.naver.maps.map.CameraUpdate
+import com.naver.maps.map.LocationTrackingMode
+import com.naver.maps.map.NaverMap
+import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.OverlayImage
 import com.naver.maps.map.util.FusedLocationSource
@@ -22,7 +26,9 @@ import kr.hs.dgsw.stac.greenstreet.databinding.FragmentMapBinding
 import kr.hs.dgsw.stac.greenstreet.util.myLocationGPSToAddress
 
 @AndroidEntryPoint
-class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.fragment_map), OnMapReadyCallback {
+class MapFragment :
+    BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.fragment_map),
+    OnMapReadyCallback {
     override val viewModel: MapViewModel by viewModels()
     override val hasBottomNav: Boolean = true
     private lateinit var naverMap: NaverMap
@@ -41,7 +47,6 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
             }
         }
     }
-
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -128,7 +133,6 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
                 locationListener
             )
         }
-
     }
 
     private fun setHomePostingRecyclerView() {

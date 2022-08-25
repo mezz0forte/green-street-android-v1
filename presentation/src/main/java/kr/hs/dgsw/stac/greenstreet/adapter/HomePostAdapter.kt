@@ -21,7 +21,7 @@ class HomePostAdapter(private val action: (latlng: LatLng) -> Unit) : ListAdapte
             binding.tvLocation.text = binding.tvLocation.context.postingLocationGPSToAddress(item.lat, item.lng)
 
             Glide.with(binding.ivPhoto)
-                //.load(item.image)
+                // .load(item.image)
                 .load("http://mediahub.seoul.go.kr/wp-content/uploads/2016/10/483b09a867e5beee49765af7423ecbbb.jpg")
                 .error(R.drawable.img_no_image)
                 .centerCrop()
@@ -45,6 +45,6 @@ class HomePostAdapter(private val action: (latlng: LatLng) -> Unit) : ListAdapte
     }
 
     override fun onBindViewHolder(holder: HomePostViewHolder, position: Int) {
-       return holder.bind(getItem(position))
+        return holder.bind(getItem(position))
     }
 }
