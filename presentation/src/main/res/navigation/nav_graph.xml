@@ -2,14 +2,47 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation"
-    app:startDestination="@id/main_home">
+    app:startDestination="@id/main_map">
 
     <fragment
-        android:id="@+id/main_home"
-        android:name="kr.hs.dgsw.stac.greenstreet.features.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:id="@+id/main_map"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.map.MapFragment"
+        android:label="MapFragment" >
+        <action
+            android:id="@+id/action_main_map_to_myInfoFragment"
+            app:destination="@id/myInfoFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/main_map" />
+        <action
+            android:id="@+id/action_main_map_to_detailPostFragment"
+            app:destination="@id/detailPostFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/main_map" />
+        <action
+            android:id="@+id/action_main_map_to_rankFragment"
+            app:destination="@id/rankFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/main_map" />
+    </fragment>
     <fragment
-        android:id="@+id/main_reels"
+        android:id="@+id/addPostFragment"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.post.add.AddPostFragment"
+        android:label="AddPostFragment" />
+    <fragment
+        android:id="@+id/main_reolve_post"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.post.resolve.ResolvePostFragment"
+        android:label="ResolvePostFragment" />
+    <fragment
+        android:id="@+id/realsFragment"
         android:name="kr.hs.dgsw.stac.greenstreet.features.reels.ReelsFragment"
         android:label="ReelsFragment" />
     <activity
@@ -17,9 +50,22 @@
         android:name="kr.hs.dgsw.stac.greenstreet.features.main.MainActivity"
         android:label="MainActivity" />
     <fragment
-        android:id="@+id/addPostFragment"
-        android:name="kr.hs.dgsw.stac.greenstreet.features.post.add.AddPostFragment"
-        android:label="AddPostFragment" />
+        android:id="@+id/myInfoFragment"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.myinfo.MyInfoFragment"
+        android:label="MyInfoFragment" />
 
+    <fragment
+        android:id="@+id/detailPostFragment"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.post.detail.DetailPostFragment"
+        android:label="DetailPostFragment" >
 
+        <argument
+            android:name="postingId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
+    <fragment
+        android:id="@+id/rankFragment"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.rank.RankFragment"
+        android:label="RankFragment" />
 </navigation>

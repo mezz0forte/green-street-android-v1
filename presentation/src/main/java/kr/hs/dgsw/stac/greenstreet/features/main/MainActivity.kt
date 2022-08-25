@@ -1,7 +1,7 @@
 package kr.hs.dgsw.stac.greenstreet.features.main
 
+import android.view.View
 import androidx.activity.viewModels
-import androidx.core.view.isInvisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -18,6 +18,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
 
     override fun start() {
         setNav()
+        defineViewEvent()
     }
 
     private fun setNav() {
@@ -29,20 +30,19 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
     }
 
     fun setNavVisible(demand: Boolean) {
-        binding.fabAddPost.isInvisible = demand
-        binding.baMain.isInvisible = demand
-        binding.bnvMain.isInvisible = demand
+        val viewState = if (demand) View.GONE else View.VISIBLE
+        binding.bnvMain.visibility = viewState
+        binding.tvWrite.visibility = viewState
     }
 
-    override fun bindingViewEvent() {
-        with(viewModel) {
-            viewEvent.observe(this@MainActivity) {
-                it.getContentIfNotHandled()?.let { event ->
-                    when (event) {
-                        MainViewModel.EVENT_ON_CLICK_ADD_POST -> {
-                            navController.navigate(R.id.addPostFragment)
-                        }
-                    }
+    private fun defineViewEvent() {
+        bindingViewEvent { event ->
+            when (event) {
+                MainViewModel.EVENT_ON_CLICK_ADD_POST -> {
+                    navController.navigate(R.id.addPostFragment)
+                }
+                MainViewModel.EVENT_ON_CLICK_USER -> {
+
                 }
             }
         }

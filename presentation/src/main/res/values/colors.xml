@@ -12,8 +12,14 @@
     <color name="color_black">#000000</color>
     <color name="color_white">#FFFFFF</color>
 
-    <color name="main">#309535</color>
+    <color name="main">#40A799</color>
     <color name="main200">#67CA6C</color>
     <color name="main500">#217A26</color>
     <color name="main700">#124A15</color>
+
+    <color name="color_black_text">#262424</color>
+
+    <color name="color_menu_unselected">#50000000</color>
+
+    <color name="color_prize">#EFD446</color>
 </resources>

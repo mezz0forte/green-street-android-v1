@@ -1,5 +1,6 @@
 package kr.hs.dgsw.stac.greenstreet.di
 
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,12 +11,16 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.Executors
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
+
+    @Provides
+    @Singleton
+    internal fun provideGson(): Gson = Gson()
+
     @Provides
     @Singleton
     fun provideHttpClient(): OkHttpClient {
@@ -28,13 +33,12 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
-            .client(okHttpClient)
-            .baseUrl(Constants.BASE_URL)
+    internal fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit =
+        Retrofit.Builder()
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .callbackExecutor(Executors.newSingleThreadExecutor())
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .baseUrl(Constants.BASE_URL)
+            .client(okHttpClient)
             .build()
-    }
+
 }
