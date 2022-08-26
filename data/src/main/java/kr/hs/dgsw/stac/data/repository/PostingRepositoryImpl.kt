@@ -1,21 +1,29 @@
 package kr.hs.dgsw.stac.data.repository
 
 import io.reactivex.rxjava3.core.Single
-import kr.hs.dgsw.stac.data.mapper.PostingMapper
 import kr.hs.dgsw.stac.data.network.service.PostingService
 import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.domain.repository.PostingRepository
-import kr.hs.dgsw.stac.domain.request.GetPostingRequest
+import kr.hs.dgsw.stac.domain.request.PostPostingRequest
 import javax.inject.Inject
 
 class PostingRepositoryImpl @Inject constructor(
-    private val postingService: PostingService,
-    private val postingMapper: PostingMapper
+    private val postingService: PostingService
 ) : PostingRepository {
 
-    override fun getListPosting(getPostingRequest: GetPostingRequest): Single<List<Posting>> =
-        postingService.getListPosting(getPostingRequest).map { postingMapper.transform(it.data) }
+    override fun getAllPostings(latitude: Double, longitude: Double): Single<List<Posting>> =
+        postingService.getAllPostings(latitude, longitude).map { it.data.postingList }
 
-    override fun getListPostingTest(): Single<List<Posting>> =
-        postingService.getListPostingTest().map { postingMapper.transform(it.data) }
+    override fun postPosting(postPostingRequest: PostPostingRequest): Single<Posting> =
+        postingService.postPosting(postPostingRequest).map { it.data }
+
+    override fun getPostingById(id: Long): Single<Posting> =
+        postingService.getPostingById(id).map { it.data }
+
+    override fun deletePosting(id: Long): Single<String> =
+        postingService.deletePosting(id).map { it.message }
+
+    override fun patchPosting(id: Long): Single<String> =
+        postingService.patchPosting(id).map { it.message }
+
 }

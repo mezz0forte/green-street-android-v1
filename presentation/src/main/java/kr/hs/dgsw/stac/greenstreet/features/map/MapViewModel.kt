@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kr.hs.dgsw.stac.domain.model.post.Posting
-import kr.hs.dgsw.stac.domain.usecase.post.GetListPosting
-import kr.hs.dgsw.stac.domain.usecase.post.PostingUseCases
+import kr.hs.dgsw.stac.domain.usecase.posting.GetAllPostings
+import kr.hs.dgsw.stac.domain.usecase.posting.PostingUseCases
 import kr.hs.dgsw.stac.greenstreet.base.BaseViewModel
 import javax.inject.Inject
 
@@ -17,7 +17,7 @@ class MapViewModel @Inject constructor(
     val postingList = MutableLiveData<List<Posting>>()
 
     private fun getPosting() {
-        postingUseCases.getListPosting.execute(GetListPosting.Params(36.1231, 123.12414)).toObservable()
+        postingUseCases.getAllPostings.execute(GetAllPostings.Params(36.1231, 123.12414)).toObservable()
             .map { data -> data.forEach { Log.d("TestTest", "getPosting: ${it.title}") } }
             .onErrorReturn { onError(it) }
     }
