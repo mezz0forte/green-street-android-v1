@@ -27,6 +27,8 @@ buildscript {
 
         glideVersion = '4.13.0'
 
+        indicator = '4.3'
+
         retrofitVersion = '2.9.0'
         okhttp3Version = '4.9.0'
         viewPagerVersion = '1.0.0'

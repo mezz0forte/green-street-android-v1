@@ -12,7 +12,7 @@ class PostingRepositoryImpl @Inject constructor(
 ) : PostingRepository {
 
     override fun getAllPostings(latitude: Double, longitude: Double): Single<List<Posting>> =
-        postingService.getAllPostings(latitude, longitude).map { it.data.postingList }
+        postingService.getAllPostings(latitude, longitude).map { it }
 
     override fun postPosting(postPostingRequest: PostPostingRequest): Single<Posting> =
         postingService.postPosting(postPostingRequest).map { it.data }

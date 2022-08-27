@@ -7,6 +7,8 @@ import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.domain.usecase.posting.GetAllPostings
 import kr.hs.dgsw.stac.domain.usecase.posting.PostingUseCases
 import kr.hs.dgsw.stac.greenstreet.base.BaseViewModel
+import org.reactivestreams.Subscriber
+import org.reactivestreams.Subscription
 import javax.inject.Inject
 
 @HiltViewModel
@@ -15,25 +17,35 @@ class MapViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     val postingList = MutableLiveData<List<Posting>>()
+    val error = MutableLiveData<String>()
 
-    private fun getPosting() {
-        postingUseCases.getAllPostings.execute(GetAllPostings.Params(36.1231, 123.12414)).toObservable()
-            .map { data -> data.forEach { Log.d("TestTest", "getPosting: ${it.title}") } }
-            .onErrorReturn { onError(it) }
+    fun getAllPostings() {
+        postingUseCases.getAllPostings.execute(
+            GetAllPostings.Params(36.1231, 123.12414))
+            .toObservable()
+            .map { data ->
+                data.forEach { Log.d("TestTest", "getPosting: ${it.title}") }
+                postingList.postValue(data)
+            }
+            .doOnError {
+                println("Asdf")
+                onError(it)
+            }
+            .subscribe()
     }
 
-    fun getPostingTest() {
-        postingUseCases.getListPostingTest.execute(Unit).toObservable()
+/*    fun getPostingTest() {
+        postingUseCases.getAllPostings.execute(GetAllPostings).toObservable()
             .map { data ->
                 data.forEach { Log.d("TestTest", "getPosting: ${it.title}") }
                 postingList.postValue(data)
             }
             .onErrorReturn { onError(it) }
             .subscribe()
-    }
+    }*/
 
     private fun onError(error: Throwable) {
-        error.printStackTrace()
+        this.error.postValue(error.message)
     }
 
     fun onClickMyInfo() {

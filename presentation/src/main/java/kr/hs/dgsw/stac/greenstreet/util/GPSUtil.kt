@@ -7,10 +7,14 @@ import java.util.Locale
 fun Context.myLocationGPSToAddress(lat: Double, lng: Double): String {
     val geocoder = Geocoder(this, Locale.KOREA)
     var address = "주소 오류"
+    var splitAddress = emptyList<String>()
     try {
-        val splitAddress = geocoder.getFromLocation(lat, lng, 1).first().getAddressLine(0).split(" ")
-        address = "${splitAddress[1]} ${splitAddress[2]} ${splitAddress[3]}"
+        splitAddress = geocoder.getFromLocation(lat, lng, 1).first().getAddressLine(0).split(" ")
+        address = splitAddress.toString()
+        // FIXME: 정규식으로 포맷 바꾸도록 수정
+    // "${splitAddress[1]} ${splitAddress[2]} ${splitAddress[3]}"
     } catch (e: Exception) {
+        println(splitAddress)
         e.printStackTrace()
     }
     return address

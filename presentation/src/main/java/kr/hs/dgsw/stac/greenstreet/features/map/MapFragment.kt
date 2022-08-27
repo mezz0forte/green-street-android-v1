@@ -6,6 +6,7 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.naver.maps.geometry.LatLng
@@ -82,22 +83,29 @@ class MapFragment :
 
         binding.locationView.map = naverMap
 
-        viewModel.getPostingTest()
-        observePostingList()
+        viewModel.getAllPostings()
+        observeViewModel()
         setMyGPSAddress()
     }
 
-    private fun observePostingList() {
-        viewModel.postingList.observe(this) { postingList ->
-            setMarker(postingList)
-            homePostingAdapter.submitList(postingList)
+    private fun observeViewModel() {
+        with(viewModel) {
+            error.observe(this@MapFragment) {
+                context?.let { context ->
+                    Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                }
+            }
+            postingList.observe(this@MapFragment) { postingList ->
+                setMarker(postingList)
+                homePostingAdapter.submitList(postingList)
+            }
         }
     }
 
     private fun setMarker(postingList: List<Posting>) {
         postingList.forEach { posting ->
             val marker = Marker()
-            marker.position = LatLng(posting.lat, posting.lng)
+            marker.position = LatLng(posting.latitude, posting.longitude)
             marker.map = naverMap
             marker.tag = posting.id
             val markerIcon =

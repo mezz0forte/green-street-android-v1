@@ -19,7 +19,7 @@ interface PostingService {
     fun getAllPostings(
         @Query("latitude") latitude: Double,
         @Query("longitude") longitude: Double
-    ): Single<Response<PostingDto>>
+    ): Single<List<Posting>>
 
     @POST("posting")
     fun postPosting(

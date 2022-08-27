@@ -109,6 +109,8 @@ dependencies {
     // location
     implementation "com.google.android.gms:play-services-location:$rootProject.googleLocation"
 
+    implementation "com.tbuonomo:dotsindicator:$rootProject.indicator"
+
     implementation project(":data")
     implementation project(":domain")
 }
