@@ -12,7 +12,6 @@ class DetailPostFragment : BaseFragment<FragmentDetailPostBinding, DetailPostVie
 
     override fun start() {
         val args: DetailPostFragmentArgs by navArgs()
-        binding.tvId.text = args.postingId.toString()
 
         bindingViewEvent {
             when (it) {
