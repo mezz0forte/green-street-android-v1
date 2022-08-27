@@ -1,4 +1,4 @@
-package kr.hs.dgsw.stac.domain.usecase.post
+package kr.hs.dgsw.stac.domain.usecase.posting
 
 import io.reactivex.rxjava3.core.Single
 import kr.hs.dgsw.stac.domain.function.StatementSingle
@@ -9,14 +9,15 @@ import kr.hs.dgsw.stac.domain.usecase.base.SingleUseCase
 import kr.hs.dgsw.stac.domain.usecase.base.UseCaseScheduler
 import javax.inject.Inject
 
-class GetListPostingTest @Inject constructor(
+class GetPostingById @Inject constructor(
     private val postingRepository: PostingRepository,
     useCaseScheduler: UseCaseScheduler? = null,
     logger: Logger? = null
-) : SingleUseCase<List<Posting>, Unit>(useCaseScheduler, logger) {
+) : SingleUseCase<Posting, Long>(useCaseScheduler, logger) {
 
-    override fun build(params: Unit): Single<List<Posting>> {
-        val netSingle = postingRepository.getListPostingTest()
+    override fun build(params: Long): Single<Posting> {
+        val netSingle = postingRepository.getPostingById(params)
         return StatementSingle.ifThen(netSingle)
     }
+
 }

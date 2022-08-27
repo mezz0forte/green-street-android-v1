@@ -2,9 +2,19 @@ package kr.hs.dgsw.stac.domain.repository
 
 import io.reactivex.rxjava3.core.Single
 import kr.hs.dgsw.stac.domain.model.post.Posting
-import kr.hs.dgsw.stac.domain.request.GetPostingRequest
+import kr.hs.dgsw.stac.domain.request.PostPostingRequest
 
 interface PostingRepository {
-    fun getListPosting(getPostingRequest: GetPostingRequest): Single<List<Posting>>
-    fun getListPostingTest(): Single<List<Posting>>
+
+    fun getAllPostings(latitude: Double, longitude: Double): Single<List<Posting>>
+
+    fun postPosting(postPostingRequest: PostPostingRequest): Single<Posting>
+
+    fun getPostingById(id: Long): Single<Posting>
+
+    fun deletePosting(id: Long): Single<String>
+
+    fun patchPosting(id: Long): Single<String>
+
+
 }
