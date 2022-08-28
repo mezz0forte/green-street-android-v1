@@ -22,15 +22,7 @@ class MapViewModel @Inject constructor(
             .onErrorReturn { onError(it) }
     }
 
-    fun getPostingTest() {
-        postingUseCases.getListPostingTest.execute(Unit).toObservable()
-            .map { data ->
-                data.forEach { Log.d("TestTest", "getPosting: ${it.title}") }
-                postingList.postValue(data)
-            }
-            .onErrorReturn { onError(it) }
-            .subscribe()
-    }
+
 
     private fun onError(error: Throwable) {
         error.printStackTrace()

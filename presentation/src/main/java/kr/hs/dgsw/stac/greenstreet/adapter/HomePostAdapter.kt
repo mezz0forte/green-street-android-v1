@@ -18,7 +18,7 @@ class HomePostAdapter(private val action: (latlng: LatLng) -> Unit) : ListAdapte
         fun bind(item: Posting) {
             // TODO : 1. 서버에서 위치 주소 받거나 GPS 주소로 해독하기 2. 이미지 받기
 
-            binding.tvLocation.text = binding.tvLocation.context.postingLocationGPSToAddress(item.lat, item.lng)
+            binding.tvLocation.text = binding.tvLocation.context.postingLocationGPSToAddress(item.latitude, item.longitude)
 
             Glide.with(binding.ivPhoto)
                 // .load(item.image)
@@ -28,7 +28,7 @@ class HomePostAdapter(private val action: (latlng: LatLng) -> Unit) : ListAdapte
                 .into(binding.ivPhoto)
 
             binding.root.setOnClickListener {
-                action.invoke(LatLng(item.lat, item.lng))
+                action.invoke(LatLng(item.latitude, item.longitude))
             }
         }
     }
