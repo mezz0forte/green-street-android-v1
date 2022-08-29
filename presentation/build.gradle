@@ -42,6 +42,7 @@ android {
 }
 
 dependencies {
+    implementation 'io.github.ParkSangGwon:tedpermission-normal:3.3.0'
 
     implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
     implementation "androidx.appcompat:appcompat:$rootProject.appcompat"

@@ -22,4 +22,6 @@
     <color name="color_menu_unselected">#50000000</color>
 
     <color name="color_prize">#EFD446</color>
+    
+    <color name="color_gray">#A1A1A1</color>
 </resources>

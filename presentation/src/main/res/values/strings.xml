@@ -9,4 +9,8 @@
     <string name="text_green_hero">이번주의 그린영웅</string>
     <string name="text_name_end_point">님</string>
     <string name="text_dummy_user_name">초록새싹</string>
+    <string name="text_post_title">게시물의 타이틀을 입력해주세요!</string>
+    <string name="text_post_contents">불편한 점을 적어주세요!</string>
+    <string name="text_posting">게시</string>
+    <string name="text_posting_image">이미지 올리기</string>
 </resources>
