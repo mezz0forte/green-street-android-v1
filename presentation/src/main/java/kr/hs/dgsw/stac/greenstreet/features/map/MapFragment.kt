@@ -1,11 +1,14 @@
 package kr.hs.dgsw.stac.greenstreet.features.map
 
+import android.Manifest
 import android.content.Context.LOCATION_SERVICE
+import android.content.pm.PackageManager
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.naver.maps.geometry.LatLng
@@ -48,23 +51,6 @@ class MapFragment :
         }
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
-            return
-        }
-        if (locationSource.onRequestPermissionsResult(requestCode, permissions, grantResults)) {
-            if (!locationSource.isActivated) {
-                naverMap.locationTrackingMode = LocationTrackingMode.None
-            }
-            return
-        }
-    }
-
     override fun onMapReady(map: NaverMap) {
         naverMap = map
         locationSource = FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE)
@@ -82,9 +68,8 @@ class MapFragment :
 
         binding.locationView.map = naverMap
 
-        viewModel.getPostingTest()
         observePostingList()
-        setMyGPSAddress()
+        checkPermission()
     }
 
     private fun observePostingList() {
@@ -97,7 +82,7 @@ class MapFragment :
     private fun setMarker(postingList: List<Posting>) {
         postingList.forEach { posting ->
             val marker = Marker()
-            marker.position = LatLng(posting.lat, posting.lng)
+            marker.position = LatLng(posting.latitude, posting.longitude)
             marker.map = naverMap
             marker.tag = posting.id
             val markerIcon =
@@ -120,6 +105,7 @@ class MapFragment :
             binding.tvLocation.text = it.myLocationGPSToAddress(location.latitude, location.longitude)
         }
     }
+
     private fun setMyGPSAddress() {
         context?.let { context ->
             val locationManager: LocationManager = activity?.getSystemService(LOCATION_SERVICE) as LocationManager
@@ -134,6 +120,19 @@ class MapFragment :
             )
         }
     }
+
+    private fun checkPermission() {
+        context?.let { context ->
+            if (!(ActivityCompat.checkSelfPermission(context,
+                    Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    context,
+                    Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+            ) {
+                setMyGPSAddress()
+            }
+        }
+    }
+
 
     private fun setHomePostingRecyclerView() {
         homePostingAdapter = HomePostAdapter { latlng ->
