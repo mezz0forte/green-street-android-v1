@@ -111,6 +111,9 @@ dependencies {
 
     implementation "com.tbuonomo:dotsindicator:$rootProject.indicator"
 
+    //exo player
+    implementation "com.google.android.exoplayer:exoplayer:$rootProject.exoPlayer"
+
     implementation project(":data")
     implementation project(":domain")
 }

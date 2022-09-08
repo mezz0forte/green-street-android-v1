@@ -14,4 +14,7 @@
     <string name="text_detail">자세히 보기</string>
     <string name="text_before">BEFORE</string>
     <string name="tv_after">AFTER</string>
+    <string name="text_resolved_post_desc">아름다워진 거리를 감상하세요!</string>
+    <string name="text_comment">댓글</string>
+    <string name="text_cider">사이다</string>
 </resources>

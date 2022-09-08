@@ -38,13 +38,9 @@
         android:name="kr.hs.dgsw.stac.greenstreet.features.post.add.AddPostFragment"
         android:label="AddPostFragment" />
     <fragment
-        android:id="@+id/main_reolve_post"
-        android:name="kr.hs.dgsw.stac.greenstreet.features.post.resolve.ResolvePostFragment"
-        android:label="ResolvePostFragment" />
-    <fragment
-        android:id="@+id/realsFragment"
-        android:name="kr.hs.dgsw.stac.greenstreet.features.reels.ReelsFragment"
-        android:label="ReelsFragment" />
+        android:id="@+id/main_resolved_post"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.post.resolved.ResolvedPostFragment"
+        android:label="ResolvedPostFragment" />
     <activity
         android:id="@+id/mainActivity"
         android:name="kr.hs.dgsw.stac.greenstreet.features.main.MainActivity"

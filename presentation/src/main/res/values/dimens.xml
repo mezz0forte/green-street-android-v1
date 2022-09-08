@@ -13,4 +13,7 @@
     <dimen name="title5">14sp</dimen>
     <dimen name="title6">12sp</dimen>
     <dimen name="title7">10sp</dimen>
+    <dimen name="title8">9sp</dimen>
+    <dimen name="title9">8sp</dimen>
+
 </resources>

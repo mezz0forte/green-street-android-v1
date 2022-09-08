@@ -42,6 +42,8 @@ buildscript {
         googleLocation = "20.0.0"
 
         jsoupVersion = '1.11.3'
+
+        exoPlayer = '2.18.1'
     }
 
     dependencies {
