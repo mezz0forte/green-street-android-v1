@@ -11,8 +11,6 @@ fun Context.myLocationGPSToAddress(lat: Double, lng: Double): String {
     try {
         splitAddress = geocoder.getFromLocation(lat, lng, 1).first().getAddressLine(0).split(" ")
         address = splitAddress.toString()
-        // FIXME: 정규식으로 포맷 바꾸도록 수정
-    // "${splitAddress[1]} ${splitAddress[2]} ${splitAddress[3]}"
     } catch (e: Exception) {
         println(splitAddress)
         e.printStackTrace()

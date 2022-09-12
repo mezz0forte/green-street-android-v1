@@ -5,14 +5,21 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="solution"
+            type="kr.hs.dgsw.stac.domain.model.solution.Solution" />
+
     </data>
 
     <LinearLayout
+        android:id="@+id/layout_frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginBottom="10dp"
         android:background="@color/white"
-        android:layout_marginBottom="10dp">
+        android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_top_info"
@@ -23,8 +30,10 @@
 
             <ImageView
                 android:id="@+id/iv_profile"
+                profileImage="@{solution.solver.image}"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ic_profile_default"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +47,7 @@
                 android:layout_marginStart="3dp"
                 android:fontFamily="@font/noto_medium"
                 android:includeFontPadding="false"
+                android:text="@{solution.solver.nickname}"
                 android:textColor="@color/color_black_text"
                 android:textSize="@dimen/title7"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -47,6 +57,7 @@
 
             <TextView
                 android:id="@+id/tv_date"
+                yearDateText="@{solution.createdAt}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/noto_light"
@@ -73,6 +84,8 @@
 
             <TextView
                 android:id="@+id/tv_location"
+                latitude="@{solution.posting.latitude}"
+                longitude="@{solution.posting.longitude}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
@@ -98,6 +111,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="16dp"
+            android:visibility="@{solution.type.toString().equals(`IMAGE`) ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toBottomOf="@id/layout_top_info"
             tools:visibility="visible">
 
@@ -116,11 +130,12 @@
 
                 <ImageView
                     android:id="@+id/iv_before"
+                    beforeImage="@{solution.url}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/dummy"
-                    tools:ignore="ContentDescription" />
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/dummy" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -148,12 +163,13 @@
 
                 <ImageView
                     android:id="@+id/iv_after"
+                    afterImage="@{solution.url}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/dummy"
-                    tools:ignore="ContentDescription" />
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/dummy" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -172,6 +188,7 @@
             android:id="@+id/layout_reals"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="@{solution.type.toString().equals(`IMAGE`) ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toBottomOf="@id/layout_top_info"
             tools:visibility="gone">
 
@@ -202,6 +219,7 @@
                 android:fontFamily="@font/noto_medium"
                 android:includeFontPadding="false"
                 android:maxLines="2"
+                android:text="@{solution.posting.title}"
                 android:textColor="@color/color_black_text"
                 android:textSize="@dimen/title6"
                 tools:text="저희 아이들도 이 구역에 항상 쓰레기가 있어서 불편해 하더라구요." />
@@ -215,6 +233,7 @@
                 android:fontFamily="@font/noto_regular"
                 android:includeFontPadding="false"
                 android:maxLines="5"
+                android:text="@{solution.posting.content}"
                 android:textColor="@color/color_black_text"
                 android:textSize="@dimen/title7"
                 tools:text="게시물을 보니 저도 모르게 너무 공감이 가는거 있죠.. 그래서 정신차리고 보니 저 쓰레기들을 치우고 있었습니다! ^^" />
@@ -262,9 +281,9 @@
                 android:id="@+id/layout_cider"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingVertical="3dp"
-                android:paddingHorizontal="6dp"
                 android:background="@drawable/background_cider"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -300,6 +319,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_medium"
                     android:includeFontPadding="false"
+                    android:text="@{solution.likeCountText}"
                     android:textColor="@color/color_cider"
                     android:textSize="@dimen/title9"
                     app:layout_constraintBottom_toBottomOf="parent"

@@ -1,12 +1,14 @@
-package kr.hs.dgsw.stac.greenstreet.features.post.resolved
+package kr.hs.dgsw.stac.greenstreet.features.post.resolved.vm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kr.hs.dgsw.stac.domain.model.solution.Solution
 import kr.hs.dgsw.stac.domain.usecase.solution.GetLatestSolutionUseCase
 import kr.hs.dgsw.stac.greenstreet.base.BaseViewModel
 
+@HiltViewModel
 class ResolvedPostViewModel @Inject constructor(
     private val getLatestSolutionUseCase: GetLatestSolutionUseCase
 ) : BaseViewModel() {

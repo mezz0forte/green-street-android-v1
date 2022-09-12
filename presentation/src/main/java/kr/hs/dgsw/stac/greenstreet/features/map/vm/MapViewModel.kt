@@ -1,4 +1,4 @@
-package kr.hs.dgsw.stac.greenstreet.features.map
+package kr.hs.dgsw.stac.greenstreet.features.map.vm
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -7,8 +7,6 @@ import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.domain.usecase.posting.GetAllPostings
 import kr.hs.dgsw.stac.domain.usecase.posting.PostingUseCases
 import kr.hs.dgsw.stac.greenstreet.base.BaseViewModel
-import org.reactivestreams.Subscriber
-import org.reactivestreams.Subscription
 import javax.inject.Inject
 
 @HiltViewModel

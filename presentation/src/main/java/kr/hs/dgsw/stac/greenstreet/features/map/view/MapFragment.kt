@@ -1,4 +1,4 @@
-package kr.hs.dgsw.stac.greenstreet.features.map
+package kr.hs.dgsw.stac.greenstreet.features.map.view
 
 import android.content.Context.LOCATION_SERVICE
 import android.location.LocationListener
@@ -21,9 +21,10 @@ import com.naver.maps.map.util.FusedLocationSource
 import dagger.hilt.android.AndroidEntryPoint
 import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.greenstreet.R
-import kr.hs.dgsw.stac.greenstreet.adapter.HomePostAdapter
+import kr.hs.dgsw.stac.greenstreet.features.map.adpater.HomePostAdapter
 import kr.hs.dgsw.stac.greenstreet.base.BaseFragment
 import kr.hs.dgsw.stac.greenstreet.databinding.FragmentMapBinding
+import kr.hs.dgsw.stac.greenstreet.features.map.vm.MapViewModel
 import kr.hs.dgsw.stac.greenstreet.util.myLocationGPSToAddress
 
 @AndroidEntryPoint

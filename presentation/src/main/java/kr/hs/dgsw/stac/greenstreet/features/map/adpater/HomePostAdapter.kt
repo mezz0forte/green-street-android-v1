@@ -1,4 +1,4 @@
-package kr.hs.dgsw.stac.greenstreet.adapter
+package kr.hs.dgsw.stac.greenstreet.features.map.adpater
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,11 +9,12 @@ import com.bumptech.glide.Glide
 import com.naver.maps.geometry.LatLng
 import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.greenstreet.R
-import kr.hs.dgsw.stac.greenstreet.adapter.callback.PostingDiffUtilCallback
+import kr.hs.dgsw.stac.greenstreet.features.map.adpater.callback.PostingDiffUtilCallback
 import kr.hs.dgsw.stac.greenstreet.databinding.ItemHomePostingBinding
 import kr.hs.dgsw.stac.greenstreet.util.postingLocationGPSToAddress
 
-class HomePostAdapter(private val action: (latlng: LatLng) -> Unit) : ListAdapter<Posting, HomePostAdapter.HomePostViewHolder>(PostingDiffUtilCallback) {
+class HomePostAdapter(private val action: (latlng: LatLng) -> Unit) : ListAdapter<Posting, HomePostAdapter.HomePostViewHolder>(
+    PostingDiffUtilCallback) {
     inner class HomePostViewHolder(val binding: ItemHomePostingBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Posting) {
             // TODO : 1. 서버에서 위치 주소 받거나 GPS 주소로 해독하기 2. 이미지 받기

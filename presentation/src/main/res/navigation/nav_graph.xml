@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/main_map"
-        android:name="kr.hs.dgsw.stac.greenstreet.features.map.MapFragment"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.map.view.MapFragment"
         android:label="MapFragment" >
         <action
             android:id="@+id/action_main_map_to_myInfoFragment"
@@ -39,8 +39,17 @@
         android:label="AddPostFragment" />
     <fragment
         android:id="@+id/main_resolved_post"
-        android:name="kr.hs.dgsw.stac.greenstreet.features.post.resolved.ResolvedPostFragment"
-        android:label="ResolvedPostFragment" />
+        android:name="kr.hs.dgsw.stac.greenstreet.features.post.resolved.view.ResolvedPostFragment"
+        android:label="ResolvedPostFragment" >
+        <action
+            android:id="@+id/action_main_resolved_post_to_detailResolvedPostFragment"
+            app:destination="@id/detailResolvedPostFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/main_resolved_post" />
+    </fragment>
     <activity
         android:id="@+id/mainActivity"
         android:name="kr.hs.dgsw.stac.greenstreet.features.main.MainActivity"
@@ -64,4 +73,13 @@
         android:id="@+id/rankFragment"
         android:name="kr.hs.dgsw.stac.greenstreet.features.rank.RankFragment"
         android:label="RankFragment" />
+    <fragment
+        android:id="@+id/detailResolvedPostFragment"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.post.resolved.view.DetailResolvedPostFragment"
+        android:label="DetailResolvedPostFragment" >
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
 </navigation>

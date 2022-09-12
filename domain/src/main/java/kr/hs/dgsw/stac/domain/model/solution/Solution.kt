@@ -15,4 +15,7 @@ data class Solution(
     val commentList: List<Comment>,
     @field:SerializedName("createdAt") val createdAt: String,
 
-)
+) {
+    val likeCountText: String
+        get() { return likeCount.toString() }
+}
