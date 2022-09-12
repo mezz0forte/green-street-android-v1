@@ -1,6 +1,7 @@
 package kr.hs.dgsw.stac.greenstreet.features.post.resolved
 
 import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import kr.hs.dgsw.stac.greenstreet.R
 import kr.hs.dgsw.stac.greenstreet.base.BaseFragment
 import kr.hs.dgsw.stac.greenstreet.databinding.FragmentResolvedPostBinding
@@ -10,5 +11,6 @@ class ResolvedPostFragment : BaseFragment<FragmentResolvedPostBinding, ResolvedP
     override val hasBottomNav: Boolean = true
 
     override fun start() {
+
     }
 }

@@ -2,8 +2,7 @@ package kr.hs.dgsw.stac.domain.model.user
 
 data class User(
     val id: Long,
-    val image: String,
+    val phone: String,
     val nickname: String,
-//    val password: String,
-//    val phone: String
+    val image: String
 )

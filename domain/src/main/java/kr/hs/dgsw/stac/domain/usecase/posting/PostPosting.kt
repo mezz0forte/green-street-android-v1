@@ -4,7 +4,7 @@ import io.reactivex.rxjava3.core.Single
 import kr.hs.dgsw.stac.domain.function.StatementSingle
 import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.domain.repository.PostingRepository
-import kr.hs.dgsw.stac.domain.request.PostPostingRequest
+import kr.hs.dgsw.stac.domain.request.posting.PostPostingRequest
 import kr.hs.dgsw.stac.domain.usecase.base.Logger
 import kr.hs.dgsw.stac.domain.usecase.base.SingleUseCase
 import kr.hs.dgsw.stac.domain.usecase.base.UseCaseScheduler

@@ -9,6 +9,8 @@ import kr.hs.dgsw.stac.data.util.service
 import kr.hs.dgsw.stac.domain.repository.PostingRepository
 import retrofit2.Retrofit
 import javax.inject.Singleton
+import kr.hs.dgsw.stac.data.repository.SolutionRepositoryImpl
+import kr.hs.dgsw.stac.domain.repository.SolutionRepository
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -18,4 +20,10 @@ class RepositoryModule {
     @Singleton
     fun providePostingRepository(retrofit: Retrofit): PostingRepository =
         PostingRepositoryImpl(retrofit.service())
+
+    @Provides
+    @Singleton
+    fun provideSolutionRepository(retrofit: Retrofit): SolutionRepository =
+        SolutionRepositoryImpl(retrofit.service())
+
 }

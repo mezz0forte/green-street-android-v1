@@ -2,9 +2,8 @@ package kr.hs.dgsw.stac.data.network.service
 
 import io.reactivex.rxjava3.core.Single
 import kr.hs.dgsw.stac.data.network.response.Response
-import kr.hs.dgsw.stac.data.network.response.dto.PostingDto
 import kr.hs.dgsw.stac.domain.model.post.Posting
-import kr.hs.dgsw.stac.domain.request.PostPostingRequest
+import kr.hs.dgsw.stac.domain.request.posting.PostPostingRequest
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET

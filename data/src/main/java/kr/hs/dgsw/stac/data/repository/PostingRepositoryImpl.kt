@@ -4,7 +4,7 @@ import io.reactivex.rxjava3.core.Single
 import kr.hs.dgsw.stac.data.network.service.PostingService
 import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.domain.repository.PostingRepository
-import kr.hs.dgsw.stac.domain.request.PostPostingRequest
+import kr.hs.dgsw.stac.domain.request.posting.PostPostingRequest
 import javax.inject.Inject
 
 class PostingRepositoryImpl @Inject constructor(
@@ -12,7 +12,7 @@ class PostingRepositoryImpl @Inject constructor(
 ) : PostingRepository {
 
     override fun getAllPostings(latitude: Double, longitude: Double): Single<List<Posting>> =
-        postingService.getAllPostings(latitude, longitude).map { it }
+        postingService.getAllPostings(latitude, longitude)
 
     override fun postPosting(postPostingRequest: PostPostingRequest): Single<Posting> =
         postingService.postPosting(postPostingRequest).map { it.data }
