@@ -17,4 +17,6 @@
     <string name="text_resolved_post_desc">아름다워진 거리를 감상하세요!</string>
     <string name="text_comment">댓글</string>
     <string name="text_cider">사이다</string>
+    <string name="title_detail_resolved_post">해결 게시물 상세 보기</string>
+    <string name="text_do_post">게시</string>
 </resources>

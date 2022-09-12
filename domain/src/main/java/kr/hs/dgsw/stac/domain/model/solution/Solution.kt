@@ -16,6 +16,8 @@ data class Solution(
     @field:SerializedName("createdAt") val createdAt: String,
 
 ) {
+
     val likeCountText: String
         get() { return likeCount.toString() }
+
 }
