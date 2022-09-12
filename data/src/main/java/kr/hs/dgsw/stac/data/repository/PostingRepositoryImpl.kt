@@ -15,15 +15,15 @@ class PostingRepositoryImpl @Inject constructor(
         postingService.getAllPostings(latitude, longitude)
 
     override fun postPosting(postPostingRequest: PostPostingRequest): Single<Posting> =
-        postingService.postPosting(postPostingRequest).map { it.data }
+        postingService.postPosting(postPostingRequest)
 
     override fun getPostingById(id: Long): Single<Posting> =
-        postingService.getPostingById(id).map { it.data }
+        postingService.getPostingById(id)
 
     override fun deletePosting(id: Long): Single<String> =
-        postingService.deletePosting(id).map { it.message }
+        postingService.deletePosting(id).map { "게시물을 삭제했습니다." }
 
     override fun patchPosting(id: Long): Single<String> =
-        postingService.patchPosting(id).map { it.message }
+        postingService.patchPosting(id).map { "게시물을 수정했습니다." }
 
 }

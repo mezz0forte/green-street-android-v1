@@ -37,6 +37,7 @@ object PostBindingAdapter {
     @JvmStatic
     @BindingAdapter(value = ["comment_name", "comment_content"], requireAll = true)
     fun setCommentContent(view: TextView, comment_name: String, comment_content: String) {
+
         val mediumFont = Typeface.create(ResourcesCompat.getFont(view.context, R.font.noto_medium), Typeface.BOLD)
         val regular = Typeface.create(ResourcesCompat.getFont(view.context, R.font.noto_regular), Typeface.NORMAL)
 

@@ -7,12 +7,9 @@ import java.util.Locale
 fun Context.myLocationGPSToAddress(lat: Double, lng: Double): String {
     val geocoder = Geocoder(this, Locale.KOREA)
     var address = "주소 오류"
-    var splitAddress = emptyList<String>()
     try {
-        splitAddress = geocoder.getFromLocation(lat, lng, 1).first().getAddressLine(0).split(" ")
-        address = splitAddress.toString()
+        address = geocoder.getFromLocation(lat, lng, 1).first().getAddressLine(0).replace("대한민국", "")
     } catch (e: Exception) {
-        println(splitAddress)
         e.printStackTrace()
     }
     return address

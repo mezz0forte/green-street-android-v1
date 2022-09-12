@@ -24,7 +24,7 @@ class ResolvedPostViewModel @Inject constructor(
             .map { data ->
                 solutionList.value = data
             }
-            .doOnError {
+            .onErrorReturn {
                 onError.value = it
             }
             .subscribe()

@@ -1,7 +1,6 @@
 package kr.hs.dgsw.stac.data.network.service
 
 import io.reactivex.rxjava3.core.Single
-import kr.hs.dgsw.stac.data.network.response.Response
 import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.domain.request.posting.PostPostingRequest
 import retrofit2.http.Body
@@ -23,21 +22,21 @@ interface PostingService {
     @POST("posting")
     fun postPosting(
         @Body postPostingRequest: PostPostingRequest
-    ): Single<Response<Posting>>
+    ): Single<Posting>
 
     @GET("posting/{id}")
     fun getPostingById(
         @Path("id") id: Long
-    ): Single<Response<Posting>>
+    ): Single<Posting>
 
     @DELETE("posting/{id}")
     fun deletePosting(
         @Path("id") id: Long
-    ): Single<Response<Any>>
+    ): Single<Any>
 
     @PATCH("posting/{id}")
     fun patchPosting(
         @Path("id") id: Long
-    ): Single<Response<Any>>
+    ): Single<Any>
 
 }

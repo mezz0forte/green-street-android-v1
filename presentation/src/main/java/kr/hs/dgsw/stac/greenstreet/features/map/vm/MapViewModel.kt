@@ -25,25 +25,10 @@ class MapViewModel @Inject constructor(
                 data.forEach { Log.d("TestTest", "getPosting: ${it.title}") }
                 postingList.postValue(data)
             }
-            .doOnError {
-                println("Asdf")
-                onError(it)
+            .onErrorReturn {
+                onError.value = it
             }
             .subscribe()
-    }
-
-/*    fun getPostingTest() {
-        postingUseCases.getAllPostings.execute(GetAllPostings).toObservable()
-            .map { data ->
-                data.forEach { Log.d("TestTest", "getPosting: ${it.title}") }
-                postingList.postValue(data)
-            }
-            .onErrorReturn { onError(it) }
-            .subscribe()
-    }*/
-
-    private fun onError(error: Throwable) {
-        this.error.postValue(error.message)
     }
 
     fun onClickMyInfo() {
