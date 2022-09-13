@@ -45,7 +45,7 @@
                 android:fontFamily="@font/noto_regular"
                 android:includeFontPadding="false"
                 android:onClick="@{() -> vm.onClickNext()}"
-                android:text="@string/text_post"
+                android:text="@string/text_posting"
                 android:textColor="@color/main"
                 android:textSize="@dimen/title5"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -171,11 +171,13 @@
                 tools:ignore="ContentDescription" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="@dimen/default_margin"
                 tools:listitem="@layout/item_image_posting"
                 android:id="@+id/rv_post_image"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/iv_line_bottom" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,10 +27,11 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AddPostFragment : BaseFragment<FragmentAddPostBinding, AddPostViewModel>(R.layout.fragment_add_post) {
+class AddPostFragment :
+    BaseFragment<FragmentAddPostBinding, AddPostViewModel>(R.layout.fragment_add_post) {
     override val viewModel: AddPostViewModel by viewModels()
     val REQUEST_IMAGE_CAPTURE = 1
-    lateinit var currentPhotoPath : String
+    lateinit var currentPhotoPath: String
     private lateinit var addImageAdapter: AddImageAdapter
 
     override fun start() {
@@ -40,7 +41,7 @@ class AddPostFragment : BaseFragment<FragmentAddPostBinding, AddPostViewModel>(R
 
 
         bindingViewEvent {
-            when(it) {
+            when (it) {
                 AddPostViewModel.EVENT_ON_CLICK_BACK -> {
                     findNavController().popBackStack()
                 }
@@ -50,7 +51,6 @@ class AddPostFragment : BaseFragment<FragmentAddPostBinding, AddPostViewModel>(R
                 }
                 AddPostViewModel.EVENT_ON_CLICK_NEXT -> {
                     findNavController().popBackStack()
-                    Toast.makeText(context, "임시 테스트", Toast.LENGTH_LONG).show()
                 }
 
             }
@@ -69,8 +69,8 @@ class AddPostFragment : BaseFragment<FragmentAddPostBinding, AddPostViewModel>(R
     }
 
 
-    private fun settingPermission(){
-        var permis = object  : PermissionListener {
+    private fun settingPermission() {
+        var permis = object : PermissionListener {
             override fun onPermissionGranted() {
 
             }
@@ -88,20 +88,21 @@ class AddPostFragment : BaseFragment<FragmentAddPostBinding, AddPostViewModel>(R
             .setDeniedMessage("카메라 권한 요청 거부")
             .setPermissions(
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                android.Manifest.permission.CAMERA)
+                android.Manifest.permission.CAMERA
+            )
             .check()
     }
 
-    private fun startCapture(){
+    private fun startCapture() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
             takePictureIntent.resolveActivity(requireActivity().packageManager)?.also {
-                val photoFile: File? = try{
+                val photoFile: File? = try {
                     createImageFile()
-                }catch(ex: IOException){
+                } catch (ex: IOException) {
                     null
                 }
-                photoFile?.also{
-                    val photoURI : Uri = FileProvider.getUriForFile(
+                photoFile?.also {
+                    val photoURI: Uri = FileProvider.getUriForFile(
                         requireContext(),
                         "kr.hs.dgsw.stac.greenstreet",
                         it
@@ -114,26 +115,35 @@ class AddPostFragment : BaseFragment<FragmentAddPostBinding, AddPostViewModel>(R
     }
 
     @Throws(IOException::class)
-    private fun createImageFile() : File {
-        val timeStamp : String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-        val storageDir : File? = requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+    private fun createImageFile(): File {
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val storageDir: File? =
+            requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(
             "JPEG_${timeStamp}_",
             ".jpg",
             storageDir
-        ).apply{
+        ).apply {
             currentPhotoPath = absolutePath
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK){
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
             val file = File(currentPhotoPath)
             val uri = Uri.fromFile(file)
-            viewModel.imageList.postValue(listOf(uri))
-
+            addImage(uri)
         }
+    }
+
+    private fun addImage(uri: Uri) {
+        val list: MutableList<Uri> = mutableListOf()
+        viewModel.imageList.value?.forEach {
+            list.add(it)
+        }
+        list.add(uri)
+        viewModel.imageList.value = list
     }
 
 }
