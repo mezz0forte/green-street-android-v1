@@ -1,9 +1,10 @@
 package kr.hs.dgsw.stac.domain.usecase.posting
 
 data class PostingUseCases(
-    val getAllPostings: GetAllPostings,
-    val postPosting: PostPosting,
+    val getPostingsByDistance: GetPostingsByDistance,
+    val createPosting: CreatePosting,
     val getPostingById: GetPostingById,
     val deletePosting: DeletePosting,
-    val patchPosting: PatchPosting
+    val updatePosting: UpdatePosting,
+
 )

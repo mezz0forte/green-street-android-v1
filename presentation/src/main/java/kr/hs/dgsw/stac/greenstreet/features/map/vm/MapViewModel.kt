@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kr.hs.dgsw.stac.domain.model.post.Posting
-import kr.hs.dgsw.stac.domain.usecase.posting.GetAllPostings
+import kr.hs.dgsw.stac.domain.usecase.posting.GetPostingsByDistance
 import kr.hs.dgsw.stac.domain.usecase.posting.PostingUseCases
 import kr.hs.dgsw.stac.greenstreet.base.BaseViewModel
 import javax.inject.Inject
@@ -18,8 +18,8 @@ class MapViewModel @Inject constructor(
     val error = MutableLiveData<String>()
 
     fun getAllPostings() {
-        postingUseCases.getAllPostings.execute(
-            GetAllPostings.Params(36.1231, 123.12414))
+        postingUseCases.getPostingsByDistance.execute(
+            GetPostingsByDistance.Params(36.1231, 123.12414))
             .toObservable()
             .map { data ->
                 data.forEach { Log.d("TestTest", "getPosting: ${it.title}") }

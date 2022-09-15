@@ -10,10 +10,10 @@ import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kr.hs.dgsw.stac.domain.repository.PostingRepository
 import kr.hs.dgsw.stac.domain.usecase.posting.DeletePosting
-import kr.hs.dgsw.stac.domain.usecase.posting.GetAllPostings
+import kr.hs.dgsw.stac.domain.usecase.posting.GetPostingsByDistance
 import kr.hs.dgsw.stac.domain.usecase.posting.GetPostingById
-import kr.hs.dgsw.stac.domain.usecase.posting.PatchPosting
-import kr.hs.dgsw.stac.domain.usecase.posting.PostPosting
+import kr.hs.dgsw.stac.domain.usecase.posting.UpdatePosting
+import kr.hs.dgsw.stac.domain.usecase.posting.CreatePosting
 import kr.hs.dgsw.stac.domain.usecase.posting.PostingUseCases
 import javax.inject.Singleton
 import kr.hs.dgsw.stac.domain.usecase.base.Logger
@@ -27,11 +27,11 @@ class UseCaseModule {
     @Singleton
     fun providePostingUseCases(postingRepository: PostingRepository): PostingUseCases =
         PostingUseCases(
-            getAllPostings = GetAllPostings(postingRepository),
-            postPosting = PostPosting(postingRepository),
+            getPostingsByDistance = GetPostingsByDistance(postingRepository),
+            createPosting = CreatePosting(postingRepository),
             getPostingById = GetPostingById(postingRepository),
             deletePosting = DeletePosting(postingRepository),
-            patchPosting = PatchPosting(postingRepository)
+            updatePosting = UpdatePosting(postingRepository)
         )
 
     @Provides

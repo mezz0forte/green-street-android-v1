@@ -129,6 +129,7 @@ class MapFragment :
             binding.tvLocation.text = it.myLocationGPSToAddress(location.latitude, location.longitude)
         }
     }
+
     private fun setMyGPSAddress() {
         context?.let { context ->
             val locationManager: LocationManager = activity?.getSystemService(LOCATION_SERVICE) as LocationManager
@@ -146,7 +147,7 @@ class MapFragment :
 
     private fun setHomePostingRecyclerView() {
         homePostingAdapter = HomePostAdapter { latlng ->
-            val cameraUpdate = CameraUpdate.scrollAndZoomTo(latlng, 100.0).animate(CameraAnimation.Easing)
+            val cameraUpdate = CameraUpdate.scrollAndZoomTo(latlng, 10.0).animate(CameraAnimation.Easing)
             naverMap.moveCamera(cameraUpdate)
         }
         binding.rvHomePosting.adapter = homePostingAdapter

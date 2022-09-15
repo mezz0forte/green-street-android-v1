@@ -20,4 +20,5 @@ class DeleteCommentUseCase @Inject constructor(
         val netSingle = commentRepository.deleteComment(params)
         return StatementSingle.ifThen(netSingle)
     }
+
 }
