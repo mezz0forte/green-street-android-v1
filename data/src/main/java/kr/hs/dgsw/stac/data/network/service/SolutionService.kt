@@ -25,5 +25,4 @@ interface SolutionService {
     fun createSolution(
         @Body solutionRequest: SolutionRequest
     ): Single<Unit>
-
 }

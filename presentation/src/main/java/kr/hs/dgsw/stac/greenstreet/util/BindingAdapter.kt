@@ -4,14 +4,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import kr.hs.dgsw.stac.greenstreet.R
 import java.text.SimpleDateFormat
 import java.util.Locale
-import kr.hs.dgsw.stac.greenstreet.R
 
 object BindingAdapter {
 
     @JvmStatic
-    @BindingAdapter(value=["latitude", "longitude"], requireAll = true)
+    @BindingAdapter(value = ["latitude", "longitude"], requireAll = true)
     fun setGpsAddress(view: TextView, latitude: Double, longitude: Double) {
         view.text = view.context.myLocationGPSToAddress(latitude, longitude)
     }
@@ -32,5 +32,4 @@ object BindingAdapter {
             .centerCrop()
             .into(view)
     }
-
 }

@@ -17,12 +17,14 @@ class CreatePosting @Inject constructor(
 ) : SingleUseCase<Posting, CreatePosting.Params>(useCaseScheduler, logger) {
 
     override fun build(params: Params): Single<Posting> {
-        val netSingle = postingRepository.postPosting(PostPostingRequest(
-            params.content,
-            params.latitude,
-            params.longitude,
-            params.title
-        ))
+        val netSingle = postingRepository.postPosting(
+            PostPostingRequest(
+                params.content,
+                params.latitude,
+                params.longitude,
+                params.title
+            )
+        )
         return StatementSingle.ifThen(netSingle)
     }
 

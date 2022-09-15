@@ -21,9 +21,9 @@ import com.naver.maps.map.util.FusedLocationSource
 import dagger.hilt.android.AndroidEntryPoint
 import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.greenstreet.R
-import kr.hs.dgsw.stac.greenstreet.features.map.adpater.HomePostAdapter
 import kr.hs.dgsw.stac.greenstreet.base.BaseFragment
 import kr.hs.dgsw.stac.greenstreet.databinding.FragmentMapBinding
+import kr.hs.dgsw.stac.greenstreet.features.map.adpater.HomePostAdapter
 import kr.hs.dgsw.stac.greenstreet.features.map.vm.MapViewModel
 import kr.hs.dgsw.stac.greenstreet.util.myLocationGPSToAddress
 
@@ -130,6 +130,7 @@ class MapFragment :
         }
     }
 
+    @Suppress("MissingPermission")
     private fun setMyGPSAddress() {
         context?.let { context ->
             val locationManager: LocationManager = activity?.getSystemService(LOCATION_SERVICE) as LocationManager

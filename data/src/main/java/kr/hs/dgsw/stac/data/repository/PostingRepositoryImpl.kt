@@ -5,8 +5,8 @@ import kr.hs.dgsw.stac.data.network.service.PostingService
 import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.domain.repository.PostingRepository
 import kr.hs.dgsw.stac.domain.request.posting.PostPostingRequest
-import javax.inject.Inject
 import kr.hs.dgsw.stac.domain.request.posting.UpdatePostingRequest
+import javax.inject.Inject
 
 class PostingRepositoryImpl @Inject constructor(
     private val postingService: PostingService
@@ -26,5 +26,4 @@ class PostingRepositoryImpl @Inject constructor(
 
     override fun updatePosting(id: Long, updatePostingRequest: UpdatePostingRequest): Single<String> =
         postingService.updatePosting(id, updatePostingRequest).map { "게시물을 수정했습니다." }
-
 }

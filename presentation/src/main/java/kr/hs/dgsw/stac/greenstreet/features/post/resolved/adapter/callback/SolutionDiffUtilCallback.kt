@@ -12,5 +12,4 @@ object SolutionDiffUtilCallback : DiffUtil.ItemCallback<Solution>() {
     override fun areContentsTheSame(oldItem: Solution, newItem: Solution): Boolean {
         return oldItem.id == newItem.id
     }
-
 }

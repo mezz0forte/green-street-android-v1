@@ -19,5 +19,4 @@ data class Solution(
 
     val likeCountText: String
         get() { return likeCount.toString() }
-
 }

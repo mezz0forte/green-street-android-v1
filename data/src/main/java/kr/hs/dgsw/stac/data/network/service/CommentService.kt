@@ -24,5 +24,4 @@ interface CommentService {
     fun updateComment(
         @Path("id") id: Long
     ): Single<String>
-
 }

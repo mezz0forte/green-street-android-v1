@@ -9,15 +9,15 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kr.hs.dgsw.stac.domain.repository.PostingRepository
-import kr.hs.dgsw.stac.domain.usecase.posting.DeletePosting
-import kr.hs.dgsw.stac.domain.usecase.posting.GetPostingsByDistance
-import kr.hs.dgsw.stac.domain.usecase.posting.GetPostingById
-import kr.hs.dgsw.stac.domain.usecase.posting.UpdatePosting
-import kr.hs.dgsw.stac.domain.usecase.posting.CreatePosting
-import kr.hs.dgsw.stac.domain.usecase.posting.PostingUseCases
-import javax.inject.Singleton
 import kr.hs.dgsw.stac.domain.usecase.base.Logger
 import kr.hs.dgsw.stac.domain.usecase.base.UseCaseScheduler
+import kr.hs.dgsw.stac.domain.usecase.posting.CreatePosting
+import kr.hs.dgsw.stac.domain.usecase.posting.DeletePosting
+import kr.hs.dgsw.stac.domain.usecase.posting.GetPostingById
+import kr.hs.dgsw.stac.domain.usecase.posting.GetPostingsByDistance
+import kr.hs.dgsw.stac.domain.usecase.posting.PostingUseCases
+import kr.hs.dgsw.stac.domain.usecase.posting.UpdatePosting
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)

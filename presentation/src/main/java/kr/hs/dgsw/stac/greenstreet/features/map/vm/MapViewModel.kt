@@ -19,7 +19,8 @@ class MapViewModel @Inject constructor(
 
     fun getAllPostings() {
         postingUseCases.getPostingsByDistance.execute(
-            GetPostingsByDistance.Params(36.1231, 123.12414))
+            GetPostingsByDistance.Params(36.1231, 123.12414)
+        )
             .toObservable()
             .map { data ->
                 data.forEach { Log.d("TestTest", "getPosting: ${it.title}") }

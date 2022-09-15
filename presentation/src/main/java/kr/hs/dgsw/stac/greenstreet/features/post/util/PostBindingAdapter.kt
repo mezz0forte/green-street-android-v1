@@ -11,7 +11,6 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import kr.hs.dgsw.stac.greenstreet.R
 
-
 object PostBindingAdapter {
 
     @JvmStatic
@@ -47,5 +46,4 @@ object PostBindingAdapter {
 
         view.text = content
     }
-
 }

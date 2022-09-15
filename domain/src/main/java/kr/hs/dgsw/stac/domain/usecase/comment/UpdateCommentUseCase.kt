@@ -1,14 +1,12 @@
 package kr.hs.dgsw.stac.domain.usecase.comment
 
 import io.reactivex.rxjava3.core.Single
-import javax.inject.Inject
 import kr.hs.dgsw.stac.domain.function.StatementSingle
 import kr.hs.dgsw.stac.domain.repository.CommentRepository
-import kr.hs.dgsw.stac.domain.request.comment.CommentRequest
-import kr.hs.dgsw.stac.domain.request.solution.SolutionRequest
 import kr.hs.dgsw.stac.domain.usecase.base.Logger
 import kr.hs.dgsw.stac.domain.usecase.base.SingleUseCase
 import kr.hs.dgsw.stac.domain.usecase.base.UseCaseScheduler
+import javax.inject.Inject
 
 class UpdateCommentUseCase @Inject constructor(
     private val commentRepository: CommentRepository,
@@ -20,5 +18,4 @@ class UpdateCommentUseCase @Inject constructor(
         val netSingle = commentRepository.updateComment(params)
         return StatementSingle.ifThen(netSingle)
     }
-
 }

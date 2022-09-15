@@ -19,5 +19,4 @@ class GetPostingById @Inject constructor(
         val netSingle = postingRepository.getPostingById(params)
         return StatementSingle.ifThen(netSingle)
     }
-
 }

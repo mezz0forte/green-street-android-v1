@@ -3,7 +3,7 @@
 buildscript {
     ext {
         compileSdkVersion = 32
-        minSdkVersion = 23
+        minSdkVersion = 28
         targetSdkVersion = 32
 
         rxAndroidVersion = '3.0.0'

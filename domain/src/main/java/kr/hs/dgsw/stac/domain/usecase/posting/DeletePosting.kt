@@ -2,7 +2,6 @@ package kr.hs.dgsw.stac.domain.usecase.posting
 
 import io.reactivex.rxjava3.core.Single
 import kr.hs.dgsw.stac.domain.function.StatementSingle
-import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.domain.repository.PostingRepository
 import kr.hs.dgsw.stac.domain.usecase.base.Logger
 import kr.hs.dgsw.stac.domain.usecase.base.SingleUseCase
@@ -19,5 +18,4 @@ class DeletePosting @Inject constructor(
         val netSingle = postingRepository.deletePosting(params)
         return StatementSingle.ifThen(netSingle)
     }
-
 }

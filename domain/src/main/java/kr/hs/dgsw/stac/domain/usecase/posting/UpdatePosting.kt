@@ -3,11 +3,11 @@ package kr.hs.dgsw.stac.domain.usecase.posting
 import io.reactivex.rxjava3.core.Single
 import kr.hs.dgsw.stac.domain.function.StatementSingle
 import kr.hs.dgsw.stac.domain.repository.PostingRepository
+import kr.hs.dgsw.stac.domain.request.posting.UpdatePostingRequest
 import kr.hs.dgsw.stac.domain.usecase.base.Logger
 import kr.hs.dgsw.stac.domain.usecase.base.SingleUseCase
 import kr.hs.dgsw.stac.domain.usecase.base.UseCaseScheduler
 import javax.inject.Inject
-import kr.hs.dgsw.stac.domain.request.posting.UpdatePostingRequest
 
 class UpdatePosting @Inject constructor(
     private val postingRepository: PostingRepository,
@@ -31,5 +31,4 @@ class UpdatePosting @Inject constructor(
         val title: String,
         val contents: String
     )
-
 }

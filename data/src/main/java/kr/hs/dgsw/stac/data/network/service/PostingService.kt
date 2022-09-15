@@ -40,5 +40,4 @@ interface PostingService {
         @Path("id") id: Long,
         @Body updatePostingRequest: UpdatePostingRequest
     ): Single<Posting>
-
 }

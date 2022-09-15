@@ -24,7 +24,7 @@ class DetailResolvedPostFragment : BaseFragment<FragmentDetailResolvedPostBindin
         viewModel.getSolutionById(navArgs.id)
 
         bindingViewEvent { event ->
-            when(event) {
+            when (event) {
                 DetailResolvedPostViewModel.ON_CLICK_BACK -> findNavController().popBackStack()
             }
         }
@@ -40,5 +40,4 @@ class DetailResolvedPostFragment : BaseFragment<FragmentDetailResolvedPostBindin
         commentAdapter = CommentAdapter()
         binding.rvComments.adapter = commentAdapter
     }
-
 }
