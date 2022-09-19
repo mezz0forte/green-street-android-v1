@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="comment"
+            type="kr.hs.dgsw.stac.domain.model.comment.Comment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            profileImage="@{comment.user.image}"
+            android:id="@+id/iv_comment_profile"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_profile_default"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            comment_name="@{comment.user.nickname}"
+            comment_content="@{comment.content}"
+            android:id="@+id/tv_comment_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/noto_regular"
+            android:textSize="@dimen/title7"
+            android:includeFontPadding="false"
+            android:textColor="@color/color_black_text"
+            android:bufferType="spannable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_comment_profile"
+            app:layout_constraintTop_toTopOf="@id/iv_comment_profile"
+            tools:text="금현호  우와 저희 동네를 위해 이런 노력을 해주시다니..ㅠㅠ 정말 감동입니다!! 지금의 저는 비록 나쁜짓만 하지만 저도 본 받아서 착한 짓을 해야겠어요. 일단 술/담배부터 끊는게 좋겠죠..?" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

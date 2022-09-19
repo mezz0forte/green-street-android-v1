@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="kr.hs.dgsw.stac.greenstreet.features.map.MapViewModel" />
+            type="kr.hs.dgsw.stac.greenstreet.features.map.vm.MapViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
