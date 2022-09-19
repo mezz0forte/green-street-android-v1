@@ -9,4 +9,10 @@
     <string name="text_green_hero">이번주의 그린영웅</string>
     <string name="text_name_end_point">님</string>
     <string name="text_dummy_user_name">초록새싹</string>
+    <string name="title_my_info">내정도</string>
+    <string name="text_my_info_rank_cheer">1등이 되는 그날까지..!</string>
+    <string name="text_my_town_rank">우리 동네 랭킹</string>
+    <string name="text_profile">프로필</string>
+    <string name="text_hero_title">칭호</string>
+    <string name="text_my_posting">내 게시물</string>
 </resources>

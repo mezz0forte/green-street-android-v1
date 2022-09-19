@@ -51,7 +51,7 @@
         android:label="MainActivity" />
     <fragment
         android:id="@+id/myInfoFragment"
-        android:name="kr.hs.dgsw.stac.greenstreet.features.myinfo.MyInfoFragment"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.myinfo.view.MyInfoFragment"
         android:label="MyInfoFragment" />
 
     <fragment

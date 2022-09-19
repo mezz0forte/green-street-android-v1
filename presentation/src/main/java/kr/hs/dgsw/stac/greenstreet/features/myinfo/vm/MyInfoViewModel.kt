@@ -1,4 +1,4 @@
-package kr.hs.dgsw.stac.greenstreet.features.myinfo
+package kr.hs.dgsw.stac.greenstreet.features.myinfo.vm
 
 import kr.hs.dgsw.stac.greenstreet.base.BaseViewModel
 

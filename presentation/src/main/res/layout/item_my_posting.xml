@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="posting"
+            type="kr.hs.dgsw.stac.domain.model.post.Posting" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_height="400dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/gutter_margin"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="3dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- TODO posting image로 고치기 -->
+                <ImageView
+                    posting_img="@{posting.content}"
+                    android:id="@+id/iv_posting"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_no_image"
+                    app:layout_constraintDimensionRatio="W, 1:1.6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@drawable/background_my_posting_location"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_posting"
+                    app:layout_constraintStart_toStartOf="@id/iv_posting">
+
+                    <ImageView
+                        android:id="@+id/iv_location"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:src="@drawable/ic_location"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/white"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        longitude="@{posting.lng}"
+                        latitude="@{posting.lat}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:fontFamily="@font/noto_regular"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/title8"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_location"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="대명초등학교 뒷문" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="26dp"
+                    android:layout_marginTop="14dp"
+                    android:ellipsize="end"
+                    android:text="@{posting.title}"
+                    android:fontFamily="@font/noto_regular"
+                    android:includeFontPadding="false"
+                    android:maxLines="4"
+                    android:textColor="@color/color_black_text"
+                    android:textSize="@dimen/title7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_posting"
+                    tools:text="저희 아이들도 작성자님이랑 똑같은 이야기를 해서 너무 공감이가 바로 치웠어요~ 거리가 깨끗해지니 마음도 한결 가볍네요^^"/>
+
+                <TextView
+                    android:id="@+id/tv_posting_status"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginBottom="13dp"
+                    android:background="@drawable/background_posting_status"
+                    android:backgroundTint="@color/color_prize"
+                    android:fontFamily="@font/noto_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/title6"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="해결된 그린거리" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
