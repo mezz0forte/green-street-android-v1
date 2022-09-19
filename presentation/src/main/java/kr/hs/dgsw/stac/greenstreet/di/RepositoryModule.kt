@@ -4,10 +4,11 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kr.hs.dgsw.stac.data.mapper.PostingMapper
 import kr.hs.dgsw.stac.data.repository.PostingRepositoryImpl
+import kr.hs.dgsw.stac.data.repository.SolutionRepositoryImpl
 import kr.hs.dgsw.stac.data.util.service
 import kr.hs.dgsw.stac.domain.repository.PostingRepository
+import kr.hs.dgsw.stac.domain.repository.SolutionRepository
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -17,6 +18,11 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun providePostingRepository(retrofit: Retrofit, postingMapper: PostingMapper): PostingRepository =
-        PostingRepositoryImpl(retrofit.service(), postingMapper)
+    fun providePostingRepository(retrofit: Retrofit): PostingRepository =
+        PostingRepositoryImpl(retrofit.service())
+
+    @Provides
+    @Singleton
+    fun provideSolutionRepository(retrofit: Retrofit): SolutionRepository =
+        SolutionRepositoryImpl(retrofit.service())
 }

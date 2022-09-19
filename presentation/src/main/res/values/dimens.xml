@@ -8,6 +8,7 @@
 
     <dimen name="gutter_margin">16dp</dimen>
 
+    <dimen name="page_btn_margin">30dp</dimen>
     <dimen name="title1">25sp</dimen>
     <dimen name="title2">20sp</dimen>
     <dimen name="title3">18sp</dimen>
@@ -15,5 +16,7 @@
     <dimen name="title5">14sp</dimen>
     <dimen name="title6">12sp</dimen>
     <dimen name="title7">10sp</dimen>
-    <dimen name="title8">8sp</dimen>
+    <dimen name="title8">9sp</dimen>
+    <dimen name="title9">8sp</dimen>
+
 </resources>
