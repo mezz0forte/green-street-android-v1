@@ -143,3 +143,6 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/androidstudio
+/presentation/src/main/res/values/api_key.xml
+/data/src/main/java/kr/hs/dgsw/stac/data/network/service/
+/data/src/main/java/kr/hs/dgsw/stac/data/util/Constants.kt

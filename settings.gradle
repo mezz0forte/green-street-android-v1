@@ -10,7 +10,14 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        jcenter()
+        maven {
+            url 'https://naver.jfrog.io/artifactory/maven/'
+        }
     }
 }
+
 rootProject.name = "green-street-android-v1"
-include ':app'
+include ':presentation'
+include ':data'
+include ':domain'
