@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kr.hs.dgsw.stac.domain.model.solution.Solution
-import kr.hs.dgsw.stac.domain.usecase.solution.GetLatestSolutionUseCase
+import kr.hs.dgsw.stac.domain.usecase.solution.GetLatestSolution
 import kr.hs.dgsw.stac.greenstreet.base.BaseViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class ResolvedPostViewModel @Inject constructor(
-    private val getLatestSolutionUseCase: GetLatestSolutionUseCase
+    private val getLatestSolution: GetLatestSolution
 ) : BaseViewModel() {
 
     private val _page = MutableLiveData(1)
@@ -19,14 +19,12 @@ class ResolvedPostViewModel @Inject constructor(
     val solutionList = MutableLiveData<List<Solution>>()
 
     fun getLatestSolution() {
-        getLatestSolutionUseCase.execute(page.value ?: 1)
+        getLatestSolution.execute(page.value ?: 1)
             .toObservable()
-            .map { data ->
+            .subscribe( { data ->
                 solutionList.value = data
-            }
-            .onErrorReturn {
-                onError.value = it
-            }
-            .subscribe()
+            }, { error ->
+                onError.value = error
+            } )
     }
 }

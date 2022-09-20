@@ -10,11 +10,11 @@ import kr.hs.dgsw.stac.domain.usecase.base.SingleUseCase
 import kr.hs.dgsw.stac.domain.usecase.base.UseCaseScheduler
 import javax.inject.Inject
 
-class CreateSolutionUseCase @Inject constructor(
+class CreateSolution @Inject constructor(
     private val solutionRepository: SolutionRepository,
     useCaseScheduler: UseCaseScheduler? = null,
     logger: Logger? = null
-) : SingleUseCase<Unit, CreateSolutionUseCase.Params>(useCaseScheduler, logger) {
+) : SingleUseCase<Unit, CreateSolution.Params>(useCaseScheduler, logger) {
 
     override fun build(params: Params): Single<Unit> {
         val netSingle = solutionRepository.createSolution(

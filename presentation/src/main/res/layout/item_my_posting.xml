@@ -63,8 +63,8 @@
                         tools:ignore="ContentDescription" />
 
                     <TextView
-                        longitude="@{posting.lng}"
-                        latitude="@{posting.lat}"
+                        longitude="@{posting.latitude}"
+                        latitude="@{posting.longitude}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="1dp"
