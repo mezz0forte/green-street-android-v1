@@ -9,7 +9,7 @@ import kr.hs.dgsw.stac.domain.usecase.base.SingleUseCase
 import kr.hs.dgsw.stac.domain.usecase.base.UseCaseScheduler
 import javax.inject.Inject
 
-class GetSolutionByIdUseCase @Inject constructor(
+class GetSolutionById @Inject constructor(
     private val solutionRepository: SolutionRepository,
     useCaseScheduler: UseCaseScheduler? = null,
     logger: Logger? = null

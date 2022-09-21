@@ -1,8 +1,8 @@
-package kr.hs.dgsw.stac.greenstreet.features.post.detail
+package kr.hs.dgsw.stac.greenstreet.features.myinfo.vm
 
 import kr.hs.dgsw.stac.greenstreet.base.BaseViewModel
 
-class DetailPostViewModel : BaseViewModel() {
+class MyInfoViewModel : BaseViewModel() {
 
     fun onClickBack() {
         viewEvent(EVENT_ON_CLICK_BACK)

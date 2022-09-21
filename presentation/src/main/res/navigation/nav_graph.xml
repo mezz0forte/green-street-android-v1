@@ -56,12 +56,12 @@
         android:label="MainActivity" />
     <fragment
         android:id="@+id/myInfoFragment"
-        android:name="kr.hs.dgsw.stac.greenstreet.features.myinfo.MyInfoFragment"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.myinfo.view.MyInfoFragment"
         android:label="MyInfoFragment" />
 
     <fragment
         android:id="@+id/detailPostFragment"
-        android:name="kr.hs.dgsw.stac.greenstreet.features.post.detail.DetailPostFragment"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.post.detail.view.DetailPostFragment"
         android:label="DetailPostFragment" >
 
         <argument

@@ -11,7 +11,7 @@ import retrofit2.http.Query
 
 interface SolutionService {
 
-    @GET("solution/")
+    @GET("solution")
     fun getLatestSolution(
         @Query("page") page: Int
     ): Single<List<Solution>>
@@ -21,7 +21,7 @@ interface SolutionService {
         @Path("id") id: Long
     ): Single<Solution>
 
-    @POST("solution/")
+    @POST("solution")
     fun createSolution(
         @Body solutionRequest: SolutionRequest
     ): Single<Unit>
