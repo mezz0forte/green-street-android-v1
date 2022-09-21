@@ -11,9 +11,7 @@ import kr.hs.dgsw.stac.greenstreet.features.post.comment.CommentAdapter
 import kr.hs.dgsw.stac.greenstreet.features.post.resolved.vm.DetailResolvedPostViewModel
 
 @AndroidEntryPoint
-class DetailResolvedPostFragment : BaseFragment<FragmentDetailResolvedPostBinding, DetailResolvedPostViewModel>(
-    R.layout.fragment_detail_resolved_post
-) {
+class DetailResolvedPostFragment : BaseFragment<FragmentDetailResolvedPostBinding, DetailResolvedPostViewModel>(R.layout.fragment_detail_resolved_post) {
     override val viewModel: DetailResolvedPostViewModel by viewModels()
     private val navArgs: DetailResolvedPostFragmentArgs by navArgs()
     private lateinit var commentAdapter: CommentAdapter

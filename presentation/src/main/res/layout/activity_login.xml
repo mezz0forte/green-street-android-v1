@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.stac.greenstreet.features.auth.login.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="그린거리"
+            android:textColor="@color/main"
+            android:textSize="@dimen/title1"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/et_phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginVertical="20dp"
+            android:hint="전화번호를 입력하세요."
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="@color/color_gray"
+            app:layout_constraintBottom_toTopOf="@id/et_pw"
+            app:layout_constraintTop_toBottomOf="@id/tv_logo" />
+
+        <EditText
+            android:id="@+id/et_pw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginBottom="40dp"
+            android:hint="비밀번호를 입력하세요."
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="@color/color_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_phone" />
+
+        <TextView
+            android:id="@+id/et_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:onClick="@{() -> vm.onClickRegister()}"
+            android:text="회원가입"
+            android:textColor="@color/color_gray_text700"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_pw" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
