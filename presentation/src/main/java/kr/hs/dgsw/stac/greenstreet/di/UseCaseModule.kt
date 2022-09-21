@@ -19,6 +19,7 @@ import kr.hs.dgsw.stac.domain.usecase.posting.PostingUseCases
 import kr.hs.dgsw.stac.domain.usecase.posting.UpdatePosting
 import javax.inject.Singleton
 import kr.hs.dgsw.stac.domain.repository.SolutionRepository
+import kr.hs.dgsw.stac.domain.usecase.posting.CreatePostingSympathy
 import kr.hs.dgsw.stac.domain.usecase.solution.CreateSolution
 import kr.hs.dgsw.stac.domain.usecase.solution.GetLatestSolution
 import kr.hs.dgsw.stac.domain.usecase.solution.GetSolutionById
@@ -36,7 +37,9 @@ class UseCaseModule {
             createPosting = CreatePosting(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
             getPostingById = GetPostingById(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
             deletePosting = DeletePosting(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
-            updatePosting = UpdatePosting(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger)
+            updatePosting = UpdatePosting(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
+            createPostingSympathy = CreatePostingSympathy(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger)
+
         )
 
     @Provides

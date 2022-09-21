@@ -188,7 +188,7 @@
             android:id="@+id/layout_reals"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="@{solution.type.toString().equals(`IMAGE`) ? View.VISIBLE : View.GONE}"
+            android:visibility="@{solution.type.toString().equals(`IMAGE`) ? View.GONE : View.VISIBLE}"
             app:layout_constraintTop_toBottomOf="@id/layout_top_info"
             tools:visibility="gone">
 

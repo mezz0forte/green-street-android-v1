@@ -13,7 +13,7 @@ class ResolvedPostViewModel @Inject constructor(
     private val getLatestSolution: GetLatestSolution
 ) : BaseViewModel() {
 
-    private val _page = MutableLiveData(1)
+    private val _page = MutableLiveData(0)
     val page: LiveData<Int> get() = _page
 
     val solutionList = MutableLiveData<List<Solution>>()

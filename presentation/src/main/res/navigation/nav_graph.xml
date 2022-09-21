@@ -61,7 +61,7 @@
 
     <fragment
         android:id="@+id/detailPostFragment"
-        android:name="kr.hs.dgsw.stac.greenstreet.features.post.detail.DetailPostFragment"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.post.detail.view.DetailPostFragment"
         android:label="DetailPostFragment" >
 
         <argument
