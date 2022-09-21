@@ -8,6 +8,7 @@ import kr.hs.dgsw.stac.domain.request.PostPostingRequest
 import kr.hs.dgsw.stac.domain.usecase.base.Logger
 import kr.hs.dgsw.stac.domain.usecase.base.SingleUseCase
 import kr.hs.dgsw.stac.domain.usecase.base.UseCaseScheduler
+import java.net.URL
 import javax.inject.Inject
 
 class PostPosting @Inject constructor(
@@ -21,6 +22,7 @@ class PostPosting @Inject constructor(
             params.content,
             params.latitude,
             params.longitude,
+            params.photo,
             params.title
         ))
         return StatementSingle.ifThen(netSingle)
@@ -30,6 +32,7 @@ class PostPosting @Inject constructor(
         val content: String,
         val latitude: Double,
         val longitude: Double,
+        val photo: List<URL>,
         val title: String
     )
 }

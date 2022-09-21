@@ -1,10 +1,10 @@
 package kr.hs.dgsw.stac.greenstreet.features.post.add
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
-import android.graphics.ImageDecoder
+import android.database.Cursor
 import android.net.Uri
-import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
@@ -13,20 +13,24 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.normal.TedPermission
-import com.naver.maps.map.CameraAnimation
-import com.naver.maps.map.CameraUpdate
+import dagger.hilt.android.AndroidEntryPoint
 import kr.hs.dgsw.stac.greenstreet.R
 import kr.hs.dgsw.stac.greenstreet.adapter.AddImageAdapter
-import kr.hs.dgsw.stac.greenstreet.adapter.HomePostAdapter
 import kr.hs.dgsw.stac.greenstreet.base.BaseFragment
 import kr.hs.dgsw.stac.greenstreet.databinding.FragmentAddPostBinding
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
+@AndroidEntryPoint
 class AddPostFragment :
     BaseFragment<FragmentAddPostBinding, AddPostViewModel>(R.layout.fragment_add_post) {
     override val viewModel: AddPostViewModel by viewModels()
@@ -70,7 +74,7 @@ class AddPostFragment :
 
 
     private fun settingPermission() {
-        var permis = object : PermissionListener {
+        val permis = object : PermissionListener {
             override fun onPermissionGranted() {
 
             }
@@ -131,19 +135,25 @@ class AddPostFragment :
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
+
+
+
             val file = File(currentPhotoPath)
-            val uri = Uri.fromFile(file)
-            addImage(uri)
+            val uri: Uri = Uri.fromFile(file)
+
+
+            val requestFile =
+                RequestBody.create("image/${file.name}".toMediaTypeOrNull(), file)
+            val body = MultipartBody.Part.createFormData("image", file.name, requestFile)
+
+
+
+            viewModel.imageList.value!!.add(uri)
+            viewModel.fileList.value!!.add(body)
         }
     }
 
-    private fun addImage(uri: Uri) {
-        val list: MutableList<Uri> = mutableListOf()
-        viewModel.imageList.value?.forEach {
-            list.add(it)
-        }
-        list.add(uri)
-        viewModel.imageList.value = list
-    }
+
+
 
 }

@@ -5,5 +5,6 @@ data class PostingUseCases(
     val postPosting: PostPosting,
     val getPostingById: GetPostingById,
     val deletePosting: DeletePosting,
-    val patchPosting: PatchPosting
+    val patchPosting: PatchPosting,
+    val uploadFiles: UploadFiles
 )

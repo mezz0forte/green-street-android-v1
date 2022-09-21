@@ -5,13 +5,8 @@ import kr.hs.dgsw.stac.data.network.response.Response
 import kr.hs.dgsw.stac.data.network.response.dto.PostingDto
 import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.domain.request.PostPostingRequest
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.PATCH
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import okhttp3.MultipartBody
+import retrofit2.http.*
 
 interface PostingService {
 
@@ -40,5 +35,11 @@ interface PostingService {
     fun patchPosting(
         @Path("id") id: Long
     ): Single<Response<Any>>
+
+    @Multipart
+    @POST("upload/file")
+    fun uploadFiles(
+        @Part image: MultipartBody.Part
+    ): Single<Response<String>>
 
 }
