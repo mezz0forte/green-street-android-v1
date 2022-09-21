@@ -252,13 +252,14 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/layout_frame"
+                    android:id="@+id/layout_solution_frame"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:background="@color/white"
                     android:orientation="vertical"
                     android:layout_marginTop="16dp"
+                    android:onClick="@{() -> vm.onClickSolution()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/layout_info">
@@ -530,7 +531,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/noto_medium"
                                 android:includeFontPadding="false"
-                                android:text="@{solution.likeCountText}"
+                                android:text="@{solution.sympathyCountText}"
                                 android:textColor="@color/color_cider"
                                 android:textSize="@dimen/title9"
                                 app:layout_constraintBottom_toBottomOf="parent"

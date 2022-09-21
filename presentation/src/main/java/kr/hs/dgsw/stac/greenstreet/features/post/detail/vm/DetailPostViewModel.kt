@@ -18,6 +18,7 @@ class DetailPostViewModel @Inject constructor(
 
     val posting = MutableLiveData<Posting>()
     val solution = MutableLiveData<Solution>()
+    val postingId = MutableLiveData<Long>()
 
     fun getPostingById(id: Long) {
         postingUseCases.getPostingById.execute(id)
@@ -41,7 +42,12 @@ class DetailPostViewModel @Inject constructor(
         viewEvent(EVENT_ON_CLICK_BACK)
     }
 
+    fun onClickSolution() {
+        viewEvent(EVENT_ON_CLICK_SOLUTION)
+    }
+
     companion object {
         const val EVENT_ON_CLICK_BACK = 0
+        const val EVENT_ON_CLICK_SOLUTION = 1
     }
 }

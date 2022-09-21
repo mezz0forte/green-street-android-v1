@@ -84,11 +84,11 @@
                     android:paddingHorizontal="16dp"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
+                    <com.mikhaellopez.circularimageview.CircularImageView
                         android:id="@+id/iv_profile"
                         profileImage="@{solution.solver.image}"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_profile_default"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -244,7 +244,7 @@
                     android:id="@+id/layout_reals"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="@{solution.type.toString().equals(`IMAGE`) ? View.VISIBLE : View.GONE}"
+                    android:visibility="@{solution.type.toString().equals(`IMAGE`) ? View.GONE : View.VISIBLE}"
                     app:layout_constraintTop_toBottomOf="@id/layout_top_info"
                     tools:visibility="gone">
 
@@ -325,7 +325,7 @@
                         android:includeFontPadding="false"
                         android:textColor="@color/color_black_text"
                         android:textSize="@dimen/title7"
-                        android:text="@{solution.commentList.size()}"
+                        android:text="@{solution.commentsCount}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/tv_comment"
                         app:layout_constraintTop_toTopOf="parent"
@@ -373,7 +373,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/noto_medium"
                             android:includeFontPadding="false"
-                            android:text="@{solution.likeCountText}"
+                            android:text="@{solution.sympathyCountText}"
                             android:textColor="@color/color_cider"
                             android:textSize="@dimen/title9"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -419,11 +419,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <ImageView
+            <com.mikhaellopez.circularimageview.CircularImageView
                 profileImage="@{myInfo.image}"
                 android:id="@+id/iv_comment_profile"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_profile_default"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -433,7 +433,7 @@
 
             <EditText
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:background="@null"
                 android:fontFamily="@font/noto_regular"

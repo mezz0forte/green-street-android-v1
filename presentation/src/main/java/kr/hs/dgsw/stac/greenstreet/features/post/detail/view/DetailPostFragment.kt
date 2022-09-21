@@ -29,6 +29,12 @@ class DetailPostFragment : BaseFragment<FragmentDetailPostBinding, DetailPostVie
         bindingViewEvent {
             when (it) {
                 DetailPostViewModel.EVENT_ON_CLICK_BACK -> findNavController().popBackStack()
+
+                DetailPostViewModel.EVENT_ON_CLICK_SOLUTION -> {
+                    viewModel.postingId.value?.let { postingId ->
+                        findNavController().navigate(DetailPostFragmentDirections.actionDetailPostFragmentToDetailResolvedPostFragment(postingId))
+                    }
+                }
             }
         }
     }
@@ -37,6 +43,7 @@ class DetailPostFragment : BaseFragment<FragmentDetailPostBinding, DetailPostVie
         posting.observe(this@DetailPostFragment) { posting ->
             getSolutionByPostingId(posting.id.toInt())
             binding.posting = posting
+            postingId.value = posting.id
             trashImageAdapter.submitList(posting.photoList)
         }
 

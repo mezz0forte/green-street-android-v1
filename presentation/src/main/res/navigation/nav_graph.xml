@@ -68,6 +68,14 @@
             android:name="postingId"
             app:argType="long"
             android:defaultValue="-1L" />
+        <action
+            android:id="@+id/action_detailPostFragment_to_detailResolvedPostFragment"
+            app:destination="@id/detailResolvedPostFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/detailPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/rankFragment"

@@ -17,7 +17,10 @@ data class Solution(
 
 ) {
 
-    val likeCountText: String
+    val sympathyCountText: String
         get() { return sympathyCount.toString() }
+
+    val commentsCount: String
+        get() { return commentList.size.toString() }
 
 }
