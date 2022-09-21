@@ -19,12 +19,15 @@ import kr.hs.dgsw.stac.domain.usecase.posting.PostingUseCases
 import kr.hs.dgsw.stac.domain.usecase.posting.UpdatePosting
 import javax.inject.Singleton
 import kr.hs.dgsw.stac.domain.repository.SolutionRepository
+import kr.hs.dgsw.stac.domain.repository.UserRepository
 import kr.hs.dgsw.stac.domain.usecase.posting.CreatePostingSympathy
 import kr.hs.dgsw.stac.domain.usecase.solution.CreateSolution
 import kr.hs.dgsw.stac.domain.usecase.solution.GetLatestSolution
 import kr.hs.dgsw.stac.domain.usecase.solution.GetSolutionById
 import kr.hs.dgsw.stac.domain.usecase.solution.GetSolutionByPostingId
 import kr.hs.dgsw.stac.domain.usecase.solution.SolutionUseCases
+import kr.hs.dgsw.stac.domain.usecase.user.GetMyInfo
+import kr.hs.dgsw.stac.domain.usecase.user.UserUseCases
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -51,6 +54,14 @@ class UseCaseModule {
             getLatestSolution = GetLatestSolution(solutionRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
             getSolutionById = GetSolutionById(solutionRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
             getSolutionByPostingId = GetSolutionByPostingId(solutionRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger)
+
+        )
+
+    @Provides
+    @Singleton
+    fun provideUserUseCase(userRepository: UserRepository, postScheduler: Scheduler, logger: Logger): UserUseCases =
+        UserUseCases(
+            getMyInfo = GetMyInfo(userRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
 
         )
 
