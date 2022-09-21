@@ -25,4 +25,10 @@ interface SolutionService {
     fun createSolution(
         @Body solutionRequest: SolutionRequest
     ): Single<Unit>
+
+    @GET("solution/posting/{id}")
+    fun getSolutionByPostingId(
+        @Path("id") postingId: Int
+    ): Single<Solution>
+
 }

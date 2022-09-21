@@ -23,6 +23,7 @@ import kr.hs.dgsw.stac.domain.usecase.posting.CreatePostingSympathy
 import kr.hs.dgsw.stac.domain.usecase.solution.CreateSolution
 import kr.hs.dgsw.stac.domain.usecase.solution.GetLatestSolution
 import kr.hs.dgsw.stac.domain.usecase.solution.GetSolutionById
+import kr.hs.dgsw.stac.domain.usecase.solution.GetSolutionByPostingId
 import kr.hs.dgsw.stac.domain.usecase.solution.SolutionUseCases
 
 @Module
@@ -48,7 +49,8 @@ class UseCaseModule {
         SolutionUseCases(
             createSolution = CreateSolution(solutionRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
             getLatestSolution = GetLatestSolution(solutionRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
-            getSolutionById = GetSolutionById(solutionRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger)
+            getSolutionById = GetSolutionById(solutionRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
+            getSolutionByPostingId = GetSolutionByPostingId(solutionRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger)
 
         )
 

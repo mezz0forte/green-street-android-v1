@@ -35,21 +35,13 @@ class DetailPostFragment : BaseFragment<FragmentDetailPostBinding, DetailPostVie
 
     private fun observeLiveData() = with(viewModel) {
         posting.observe(this@DetailPostFragment) { posting ->
+            getSolutionByPostingId(posting.id.toInt())
             binding.posting = posting
             trashImageAdapter.submitList(posting.photoList)
-            
-            binding.solution = Solution(
-                1,
-                "",
-                SolutionType.IMAGE,
-                posting.user,
-                posting,
-                likeCount = 1,
-                commentList = listOf(
-                    Comment(1, "d", posting.user, createdAt = "2022-09-20T18:09:38")
-                ),
-                createdAt = "2022-09-20T18:09:38"
-            )
+        }
+
+        solution.observe(this@DetailPostFragment) { solution ->
+            binding.solution = solution
         }
     }
 
