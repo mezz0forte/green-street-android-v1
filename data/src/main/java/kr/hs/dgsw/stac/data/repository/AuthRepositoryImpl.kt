@@ -4,6 +4,8 @@ import io.reactivex.rxjava3.core.Single
 import kr.hs.dgsw.stac.data.network.service.AuthService
 import kr.hs.dgsw.stac.data.network.service.SolutionService
 import kr.hs.dgsw.stac.domain.model.solution.Solution
+import kr.hs.dgsw.stac.domain.model.user.Login
+import kr.hs.dgsw.stac.domain.model.user.Token
 import kr.hs.dgsw.stac.domain.model.user.User
 import kr.hs.dgsw.stac.domain.repository.AuthRepository
 import kr.hs.dgsw.stac.domain.repository.SolutionRepository
@@ -16,5 +18,9 @@ class AuthRepositoryImpl @Inject constructor(
 
     override fun postRegister(user: User): Single<Void> {
         return authService.postRegister(user)
+    }
+
+    override fun postLogin(login: Login): Single<Token> {
+        return authService.postLogin(login)
     }
 }

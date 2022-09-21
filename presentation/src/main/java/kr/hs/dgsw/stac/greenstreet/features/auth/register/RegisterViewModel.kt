@@ -17,7 +17,6 @@ class RegisterViewModel @Inject constructor(
             .toObservable()
             .map { }
             .onErrorReturn {
-                Log.d("TAGTAG", it.toString())
                 onError.value = it
             }
             .subscribe()

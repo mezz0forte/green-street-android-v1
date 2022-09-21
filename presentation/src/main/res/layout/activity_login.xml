@@ -66,6 +66,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_pw" />
 
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> vm.onClickLogin()}"
+            android:layout_marginHorizontal="60dp"
+            app:layout_constraintTop_toBottomOf="@id/et_sign_up"
+            android:text="로그인" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
