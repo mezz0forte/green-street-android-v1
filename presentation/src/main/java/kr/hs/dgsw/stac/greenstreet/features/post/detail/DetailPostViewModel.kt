@@ -11,4 +11,5 @@ class DetailPostViewModel : BaseViewModel() {
     companion object {
         const val EVENT_ON_CLICK_BACK = 0
     }
+    
 }
