@@ -82,11 +82,11 @@
                     android:paddingHorizontal="16dp"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
+                    <com.mikhaellopez.circularimageview.CircularImageView
                         profileImage="@{posting.user.image}"
                         android:id="@+id/iv_post_profile"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_profile_default"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -109,6 +109,20 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="초록새싹" />
 
+                    <TextView
+                        android:id="@+id/tv_post_date"
+                        yearDateText="@{posting.createdAt}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_light"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/color_gray_text700"
+                        android:textSize="@dimen/title8"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="2022.09.02" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.viewpager2.widget.ViewPager2
@@ -123,41 +137,18 @@
                     app:layout_constraintTop_toBottomOf="@id/layout_post_profile"
                     tools:background="@color/color_black_text" />
 
-                <ImageView
-                    android:id="@+id/iv_next_page"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:layout_marginEnd="@dimen/page_btn_margin"
-                    android:rotation="180"
-                    android:src="@drawable/ic_btn_back"
-                    app:layout_constraintBottom_toBottomOf="@id/vp_tresh_image"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/vp_tresh_image"
-                    app:tint="@color/white"
-                    tools:ignore="ContentDescription" />
-
-                <ImageView
-                    android:id="@+id/iv_prev_page"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:layout_marginStart="@dimen/page_btn_margin"
-                    android:src="@drawable/ic_btn_back"
-                    app:layout_constraintBottom_toBottomOf="@id/vp_tresh_image"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/vp_tresh_image"
-                    app:tint="@color/white"
-                    tools:ignore="ContentDescription" />
-
                 <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
+                    android:id="@+id/indicator_trash_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     app:dotsColor="@color/main"
                     app:dotsSize="7dp"
                     app:dotsSpacing="4dp"
-                    app:layout_constraintBottom_toBottomOf="@id/vp_tresh_image"
+                    app:layout_constraintTop_toBottomOf="@id/vp_tresh_image"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="10dp"/>
 
                 <LinearLayout
                     android:id="@+id/layout_info"
@@ -168,7 +159,7 @@
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/vp_tresh_image">
+                    app:layout_constraintTop_toBottomOf="@id/indicator_trash_image">
 
                     <LinearLayout
                         android:id="@+id/layout_location"
@@ -282,11 +273,11 @@
                         android:paddingHorizontal="16dp"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <ImageView
+                        <com.mikhaellopez.circularimageview.CircularImageView
                             android:id="@+id/iv_profile"
                             profileImage="@{solution.solver.image}"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_profile_default"
                             app:layout_constraintBottom_toBottomOf="parent"
