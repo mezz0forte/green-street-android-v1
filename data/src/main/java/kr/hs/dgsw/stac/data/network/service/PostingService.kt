@@ -12,9 +12,6 @@ import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
-import kr.hs.dgsw.stac.domain.request.PostPostingRequest
-import retrofit2.http.*
-import okhttp3.MultipartBody
 
 interface PostingService {
 
@@ -50,9 +47,4 @@ interface PostingService {
         @Path("id") id: Long,
         @Body updatePostingRequest: UpdatePostingRequest
     ): Single<Posting>
-    @Multipart
-    @POST("upload/file")
-    fun uploadFiles(
-        @Part image: MultipartBody.Part
-    ): Single<Response<String>>
 }

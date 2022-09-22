@@ -8,6 +8,4 @@ data class PostingUseCases(
     val updatePosting: UpdatePosting,
     val createPostingSympathy: CreatePostingSympathy,
 
-    val uploadFiles: UploadFiles
-    val patchPosting: PatchPosting,
 )

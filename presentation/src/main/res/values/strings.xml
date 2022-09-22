@@ -26,8 +26,4 @@
     <string name="title_detail_resolved_post">해결 게시물 상세 보기</string>
     <string name="text_do_post">게시</string>
     <string name="text_nick_name">닉네임</string>
-    <string name="text_post_title">게시물의 타이틀을 입력해주세요!</string>
-    <string name="text_post_contents">불편한 점을 적어주세요!</string>
-    <string name="text_posting">게시</string>
-    <string name="text_posting_image">이미지 올리기</string>
 </resources>
