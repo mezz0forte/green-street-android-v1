@@ -1,11 +1,14 @@
 package kr.hs.dgsw.stac.data.repository
 
+import android.util.Log
 import io.reactivex.rxjava3.core.Single
 import kr.hs.dgsw.stac.data.network.service.PostingService
 import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.domain.repository.PostingRepository
 import kr.hs.dgsw.stac.domain.request.posting.PostPostingRequest
 import kr.hs.dgsw.stac.domain.request.posting.UpdatePostingRequest
+import kr.hs.dgsw.stac.domain.request.PostPostingRequest
+import okhttp3.MultipartBody
 import javax.inject.Inject
 
 class PostingRepositoryImpl @Inject constructor(
@@ -30,4 +33,10 @@ class PostingRepositoryImpl @Inject constructor(
 
     override fun updatePosting(id: Long, updatePostingRequest: UpdatePostingRequest): Single<String> =
         postingService.updatePosting(id, updatePostingRequest).map { "게시물을 수정했습니다." }
+    override fun uploadFiles(image: MultipartBody.Part): Single<String> =
+        postingService.uploadFiles(image).map {
+            it.status.toString()
+        }
+
+
 }
