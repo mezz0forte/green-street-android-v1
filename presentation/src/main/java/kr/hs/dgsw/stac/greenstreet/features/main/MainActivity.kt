@@ -20,9 +20,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
     override fun start() {
         setNav()
         defineViewEvent()
-
-        GreenStreetApplication.prefs.setAccessToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MywiZXhwIjoxNjY1ODEzNjE1fQ._BXv0EiJR1GHEtYxD8T5618GhjDkzxj6F_qAcGPmv5ASQp2xBbhwp5xeZiID2DlaGwmKNAD8urQ_cebqZBFC-w")
-        GreenStreetApplication.prefs.setRefreshToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6MSwiZXhwIjoxNjY1NTAxNTIyfQ.KvBnODCZ0Nsukn9pjOmSp3izM-nyo2HgbC6K3JMOCSYdZjl1BF5SZOoZpEgbSAt6K80Viewj7Stf_RpzAHP0hg")
     }
 
     private fun setNav() {
