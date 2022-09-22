@@ -22,14 +22,20 @@ class MapViewModel @Inject constructor(
             GetPostingsByDistance.Params(36.1231, 123.12414)
         )
             .toObservable()
-            .map { data ->
+            .subscribe({ data ->
+                data.forEach { Log.d("TestTest", "getPosting: ${it.title}") }
+                postingList.postValue(data)
+            }, {
+                onError.value = it
+            })
+
+/*            .map { data ->
                 data.forEach { Log.d("TestTest", "getPosting: ${it.title}") }
                 postingList.postValue(data)
             }
             .onErrorReturn {
                 onError.value = it
-            }
-            .subscribe()
+            }*/
     }
 
     fun onClickMyInfo() {

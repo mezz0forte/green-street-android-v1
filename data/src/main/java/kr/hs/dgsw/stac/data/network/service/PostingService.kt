@@ -14,7 +14,7 @@ import retrofit2.http.Query
 
 interface PostingService {
 
-    @GET("posting")
+    @GET("posting/nearby")
     fun getPostingsByDistance(
         @Query("latitude") latitude: Double,
         @Query("longitude") longitude: Double
@@ -33,6 +33,11 @@ interface PostingService {
     @DELETE("posting/{id}")
     fun deletePosting(
         @Path("id") id: Long
+    ): Single<Any>
+
+    @POST("/posting/sympathy")
+    fun createPostingSympathy(
+        @Body posting_id: Int
     ): Single<Any>
 
     @PATCH("posting/{id}")

@@ -24,6 +24,9 @@ class PostingRepositoryImpl @Inject constructor(
     override fun deletePosting(id: Long): Single<String> =
         postingService.deletePosting(id).map { "게시물을 삭제했습니다." }
 
+    override fun createPostingSympathy(postingId: Int): Single<String> =
+        postingService.createPostingSympathy(postingId).map { "공감을 눌렀습니다." }
+
     override fun updatePosting(id: Long, updatePostingRequest: UpdatePostingRequest): Single<String> =
         postingService.updatePosting(id, updatePostingRequest).map { "게시물을 수정했습니다." }
 }
