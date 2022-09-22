@@ -11,5 +11,4 @@ object RankDiffUtilCallback : DiffUtil.ItemCallback<Rank>() {
     override fun areContentsTheSame(oldItem: Rank, newItem: Rank): Boolean {
         return oldItem == newItem
     }
-
 }

@@ -2,12 +2,12 @@ package kr.hs.dgsw.stac.greenstreet.features.myinfo.vm
 
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.domain.model.user.User
+import kr.hs.dgsw.stac.domain.usecase.posting.PostingUseCases
 import kr.hs.dgsw.stac.domain.usecase.user.UserUseCases
 import kr.hs.dgsw.stac.greenstreet.base.BaseViewModel
 import javax.inject.Inject
-import kr.hs.dgsw.stac.domain.model.post.Posting
-import kr.hs.dgsw.stac.domain.usecase.posting.PostingUseCases
 
 @HiltViewModel
 class MyInfoViewModel @Inject constructor(

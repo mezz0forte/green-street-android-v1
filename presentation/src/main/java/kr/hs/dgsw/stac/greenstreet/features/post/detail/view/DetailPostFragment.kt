@@ -1,6 +1,5 @@
 package kr.hs.dgsw.stac.greenstreet.features.post.detail.view
 
-import android.opengl.Visibility
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController

@@ -2,11 +2,11 @@ package kr.hs.dgsw.stac.greenstreet.features.solution.vm
 
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kr.hs.dgsw.stac.domain.model.solution.SolutionType
 import kr.hs.dgsw.stac.domain.usecase.solution.CreateSolution
 import kr.hs.dgsw.stac.domain.usecase.solution.SolutionUseCases
 import kr.hs.dgsw.stac.greenstreet.base.BaseViewModel
+import javax.inject.Inject
 
 @HiltViewModel
 class AddSolutionViewModel @Inject constructor(
@@ -47,5 +47,4 @@ class AddSolutionViewModel @Inject constructor(
         const val EVENT_ON_CLICK_ADD = 1
         const val EVENT_ON_CLICK_BACK = 2
     }
-
 }

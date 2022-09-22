@@ -38,7 +38,6 @@ class MyInfoFragment : BaseFragment<FragmentMyInfoBinding, MyInfoViewModel>(R.la
             binding.tvPostingCount.text = it.size.toString()
             myPostingAdapter.submitList(it)
         }
-
     }
 
     private fun settingMyPostingAdapter() {

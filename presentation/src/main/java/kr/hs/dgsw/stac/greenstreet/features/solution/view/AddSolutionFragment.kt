@@ -19,7 +19,6 @@ class AddSolutionFragment : BaseFragment<FragmentAddSolutionBinding, AddSolution
     override fun start() {
         observeViewEvent()
         viewModel.postingId.value = navArgs.postingId
-
     }
 
     private fun observeViewEvent() = bindingViewEvent { event ->
@@ -36,13 +35,10 @@ class AddSolutionFragment : BaseFragment<FragmentAddSolutionBinding, AddSolution
             AddSolutionViewModel.EVENT_ON_CLICK_ADD -> {
                 viewModel.addSolution()
             }
-
         }
-
     }
 
     private fun navigateToBack() {
         findNavController().popBackStack()
     }
-
 }
