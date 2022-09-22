@@ -23,7 +23,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
                 RegisterViewModel.EVENT_ON_CLICK_REGISTER -> {
                     viewModel.postRegister(
                         User(
-                            "https://avatars.githubusercontent.com/u/80818534?v=4",
+                            "",
                             binding.etNickname.text.toString(),
                             binding.etPw.text.toString(),
                             binding.etPhone.text.toString()
