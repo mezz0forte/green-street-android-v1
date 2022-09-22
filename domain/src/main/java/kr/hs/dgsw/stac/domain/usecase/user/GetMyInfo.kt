@@ -1,13 +1,13 @@
 package kr.hs.dgsw.stac.domain.usecase.user
 
 import io.reactivex.rxjava3.core.Single
-import javax.inject.Inject
 import kr.hs.dgsw.stac.domain.function.StatementSingle
 import kr.hs.dgsw.stac.domain.model.user.User
 import kr.hs.dgsw.stac.domain.repository.UserRepository
 import kr.hs.dgsw.stac.domain.usecase.base.Logger
 import kr.hs.dgsw.stac.domain.usecase.base.SingleUseCase
 import kr.hs.dgsw.stac.domain.usecase.base.UseCaseScheduler
+import javax.inject.Inject
 
 class GetMyInfo @Inject constructor(
     private val userRepository: UserRepository,
@@ -18,5 +18,4 @@ class GetMyInfo @Inject constructor(
     override fun build(params: Unit): Single<User> {
         return StatementSingle.ifThen(userRepository.getMyInfo())
     }
-
 }

@@ -2,19 +2,19 @@ package kr.hs.dgsw.stac.greenstreet.features.post.detail.vm
 
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kr.hs.dgsw.stac.domain.model.post.Posting
 import kr.hs.dgsw.stac.domain.model.solution.Solution
 import kr.hs.dgsw.stac.domain.usecase.posting.PostingUseCases
 import kr.hs.dgsw.stac.domain.usecase.solution.SolutionUseCases
 import kr.hs.dgsw.stac.greenstreet.base.BaseViewModel
+import javax.inject.Inject
 
 @HiltViewModel
 class DetailPostViewModel @Inject constructor(
     private val postingUseCases: PostingUseCases,
     private val solutionUseCases: SolutionUseCases,
 
-): BaseViewModel() {
+) : BaseViewModel() {
 
     val posting = MutableLiveData<Posting>()
     val solution = MutableLiveData<Solution>()
@@ -24,7 +24,7 @@ class DetailPostViewModel @Inject constructor(
         postingUseCases.getPostingById.execute(id)
             .toObservable()
             .subscribe(
-                { data ->  posting.value = data },
+                { data -> posting.value = data },
                 { error -> onError.value = error }
             )
     }

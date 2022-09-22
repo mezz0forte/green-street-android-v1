@@ -12,7 +12,7 @@ import kr.hs.dgsw.stac.greenstreet.features.myinfo.adapter.callback.MyPostingDif
 
 class MyPostingAdapter : ListAdapter<Posting, MyPostingAdapter.MyPostingViewHolder>(MyPostingDiffUtilCallback) {
 
-    inner class MyPostingViewHolder(private val binding: ItemMyPostingBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class MyPostingViewHolder(private val binding: ItemMyPostingBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(posting: Posting) {
             binding.posting = posting
         }

@@ -9,7 +9,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kr.hs.dgsw.stac.greenstreet.R
 import kr.hs.dgsw.stac.greenstreet.base.BaseActivity
 import kr.hs.dgsw.stac.greenstreet.databinding.ActivityMainBinding
-import kr.hs.dgsw.stac.greenstreet.widget.GreenStreetApplication
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.activity_main) {

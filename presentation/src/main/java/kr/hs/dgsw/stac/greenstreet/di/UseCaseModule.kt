@@ -9,18 +9,17 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kr.hs.dgsw.stac.domain.repository.PostingRepository
+import kr.hs.dgsw.stac.domain.repository.SolutionRepository
+import kr.hs.dgsw.stac.domain.repository.UserRepository
 import kr.hs.dgsw.stac.domain.usecase.base.Logger
 import kr.hs.dgsw.stac.domain.usecase.base.UseCaseScheduler
 import kr.hs.dgsw.stac.domain.usecase.posting.CreatePosting
+import kr.hs.dgsw.stac.domain.usecase.posting.CreatePostingSympathy
 import kr.hs.dgsw.stac.domain.usecase.posting.DeletePosting
 import kr.hs.dgsw.stac.domain.usecase.posting.GetPostingById
 import kr.hs.dgsw.stac.domain.usecase.posting.GetPostingsByDistance
 import kr.hs.dgsw.stac.domain.usecase.posting.PostingUseCases
 import kr.hs.dgsw.stac.domain.usecase.posting.UpdatePosting
-import javax.inject.Singleton
-import kr.hs.dgsw.stac.domain.repository.SolutionRepository
-import kr.hs.dgsw.stac.domain.repository.UserRepository
-import kr.hs.dgsw.stac.domain.usecase.posting.CreatePostingSympathy
 import kr.hs.dgsw.stac.domain.usecase.solution.CreateSolution
 import kr.hs.dgsw.stac.domain.usecase.solution.GetLatestSolution
 import kr.hs.dgsw.stac.domain.usecase.solution.GetSolutionById
@@ -28,6 +27,7 @@ import kr.hs.dgsw.stac.domain.usecase.solution.GetSolutionByPostingId
 import kr.hs.dgsw.stac.domain.usecase.solution.SolutionUseCases
 import kr.hs.dgsw.stac.domain.usecase.user.GetMyInfo
 import kr.hs.dgsw.stac.domain.usecase.user.UserUseCases
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)

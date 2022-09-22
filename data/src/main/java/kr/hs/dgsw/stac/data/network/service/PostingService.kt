@@ -2,7 +2,6 @@ package kr.hs.dgsw.stac.data.network.service
 
 import io.reactivex.rxjava3.core.Single
 import kr.hs.dgsw.stac.domain.model.post.Posting
-import kr.hs.dgsw.stac.domain.model.user.AccountType
 import kr.hs.dgsw.stac.domain.request.posting.PostPostingRequest
 import kr.hs.dgsw.stac.domain.request.posting.UpdatePostingRequest
 import retrofit2.http.Body
@@ -40,7 +39,6 @@ interface PostingService {
     fun createPostingSympathy(
         @Body posting_id: Int
     ): Single<Any>
-
 
     @PATCH("posting/{id}")
     fun updatePosting(

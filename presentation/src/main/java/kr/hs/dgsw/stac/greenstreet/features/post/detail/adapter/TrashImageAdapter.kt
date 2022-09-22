@@ -16,5 +16,4 @@ class TrashImageAdapter : BaseListAdapter<Photo, ItemTrashImageBinding>(R.layout
             .error(R.drawable.img_no_image)
             .into(binding.ivTrash)
     }
-
 }

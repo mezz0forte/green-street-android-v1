@@ -32,7 +32,6 @@ class MyInfoFragment : BaseFragment<FragmentMyInfoBinding, MyInfoViewModel>(R.la
         user.observe(this@MyInfoFragment) {
             binding.user = it
         }
-
     }
 
     private fun settingMyPostingAdapter() {

@@ -5,7 +5,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 import kr.hs.dgsw.stac.data.util.Constants
 import kr.hs.dgsw.stac.greenstreet.widget.GreenStreetApplication
 import okhttp3.Interceptor
@@ -15,6 +14,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -33,7 +33,7 @@ class NetworkModule {
     fun provideHttpClient(tokenInterceptor: TokenInterceptor): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        //val errorResponseInterceptor = ErrorResponseInterceptor()
+        // val errorResponseInterceptor = ErrorResponseInterceptor()
 
         val okhttpBuilder = OkHttpClient().newBuilder()
             .addInterceptor(httpLoggingInterceptor)
@@ -52,7 +52,6 @@ class NetworkModule {
             .baseUrl(Constants.BASE_URL)
             .client(okHttpClient)
             .build()
-
 
     class TokenInterceptor : Interceptor {
 

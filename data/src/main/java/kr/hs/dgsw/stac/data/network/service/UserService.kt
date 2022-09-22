@@ -8,5 +8,4 @@ interface UserService {
 
     @GET("user/my")
     fun getMyInfo(): Single<User>
-
 }
