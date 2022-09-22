@@ -16,6 +16,7 @@ import kr.hs.dgsw.stac.domain.usecase.base.UseCaseScheduler
 import kr.hs.dgsw.stac.domain.usecase.posting.CreatePosting
 import kr.hs.dgsw.stac.domain.usecase.posting.CreatePostingSympathy
 import kr.hs.dgsw.stac.domain.usecase.posting.DeletePosting
+import kr.hs.dgsw.stac.domain.usecase.posting.GetMyPosting
 import kr.hs.dgsw.stac.domain.usecase.posting.GetPostingById
 import kr.hs.dgsw.stac.domain.usecase.posting.GetPostingsByDistance
 import kr.hs.dgsw.stac.domain.usecase.posting.PostingUseCases
@@ -42,7 +43,8 @@ class UseCaseModule {
             getPostingById = GetPostingById(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
             deletePosting = DeletePosting(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
             updatePosting = UpdatePosting(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
-            createPostingSympathy = CreatePostingSympathy(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger)
+            createPostingSympathy = CreatePostingSympathy(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
+            getMyPosting = GetMyPosting(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
 
         )
 

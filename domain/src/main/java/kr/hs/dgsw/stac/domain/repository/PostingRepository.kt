@@ -13,6 +13,8 @@ interface PostingRepository {
 
     fun getPostingById(id: Long): Single<Posting>
 
+    fun getMyPosting(): Single<List<Posting>>
+
     fun deletePosting(id: Long): Single<String>
 
     fun createPostingSympathy(postingId: Int): Single<String>

@@ -12,7 +12,7 @@ open class BaseViewModel : ViewModel() {
         return isLoading
     }
 
-    protected val onError = MutableLiveData<Throwable>()
+    val onError = MutableLiveData<Throwable>()
 
     private val _viewEvent = MutableLiveData<Event<Any>>()
     val viewEvent: LiveData<Event<Any>>

@@ -30,6 +30,9 @@ interface PostingService {
         @Path("id") id: Long
     ): Single<Posting>
 
+    @GET("posting/my")
+    fun getMyPosting(): Single<List<Posting>>
+
     @DELETE("posting/{id}")
     fun deletePosting(
         @Path("id") id: Long

@@ -83,8 +83,8 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <com.mikhaellopez.circularimageview.CircularImageView
-                        profileImage="@{posting.user.image}"
                         android:id="@+id/iv_post_profile"
+                        profileImage="@{posting.user.image}"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:scaleType="centerCrop"
@@ -141,14 +141,14 @@
                     android:id="@+id/indicator_trash_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="8dp"
                     app:dotsColor="@color/main"
                     app:dotsSize="7dp"
                     app:dotsSpacing="4dp"
-                    app:layout_constraintTop_toBottomOf="@id/vp_tresh_image"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginTop="10dp"/>
+                    app:layout_constraintTop_toBottomOf="@id/vp_tresh_image" />
 
                 <LinearLayout
                     android:id="@+id/layout_info"
@@ -177,9 +177,9 @@
                             tools:ignore="ContentDescription" />
 
                         <TextView
+                            android:id="@+id/tv_post_location"
                             latitude="@{posting.latitude}"
                             longitude="@{posting.longitude}"
-                            android:id="@+id/tv_post_location"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="1dp"
@@ -210,9 +210,9 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/noto_regular"
                         android:includeFontPadding="false"
+                        android:text="@{posting.content}"
                         android:textColor="@color/color_black_text"
                         android:textSize="@dimen/title5"
-                        android:text="@{posting.content}"
                         tools:text="아이들이 기분 좋게 일어나 공부하러 학교에 가는 중에 이런 쓰레기 더미를 보며 가야하는게 참 안타깝네요.." />
 
                     <LinearLayout
@@ -255,17 +255,16 @@
                     android:id="@+id/layout_solution_frame"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:layout_marginBottom="10dp"
                     android:background="@color/white"
-                    android:orientation="vertical"
-                    android:layout_marginTop="16dp"
                     android:onClick="@{() -> vm.onClickSolution()}"
+                    android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/layout_info">
 
-                    <include
-                        layout="@layout/item_small_line" />
+                    <include layout="@layout/item_small_line" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/layout_top_info"
@@ -548,6 +547,23 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btn_add_solution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/main"
+            android:text="그린영웅이 되어 봐요!"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title5"
+            app:icon="@drawable/ic_write"
+            app:iconTint="@color/white"
+            android:onClick="@{() -> vm.onClickAddSolution()}"
+            android:fontFamily="@font/noto_regular"
+            android:includeFontPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

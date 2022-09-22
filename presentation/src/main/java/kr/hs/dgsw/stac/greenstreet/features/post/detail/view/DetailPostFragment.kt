@@ -1,5 +1,6 @@
 package kr.hs.dgsw.stac.greenstreet.features.post.detail.view
 
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -31,6 +32,12 @@ class DetailPostFragment : BaseFragment<FragmentDetailPostBinding, DetailPostVie
                         findNavController().navigate(DetailPostFragmentDirections.actionDetailPostFragmentToDetailResolvedPostFragment(postingId))
                     }
                 }
+
+                DetailPostViewModel.EVENT_ADD_SOLUTION -> {
+                    viewModel.postingId.value?.let { postingId ->
+                        findNavController().navigate(DetailPostFragmentDirections.actionDetailPostFragmentToAddSolutionFragment(postingId))
+                    }
+                }
             }
         }
     }
@@ -45,6 +52,13 @@ class DetailPostFragment : BaseFragment<FragmentDetailPostBinding, DetailPostVie
 
         solution.observe(this@DetailPostFragment) { solution ->
             binding.solution = solution
+            binding.layoutSolutionFrame.visibility = View.VISIBLE
+            binding.btnAddSolution.visibility = View.GONE
+        }
+
+        onError.observe(this@DetailPostFragment) {
+            binding.layoutSolutionFrame.visibility = View.GONE
+            binding.btnAddSolution.visibility = View.VISIBLE
         }
     }
 

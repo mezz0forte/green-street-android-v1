@@ -21,6 +21,10 @@ class PostingRepositoryImpl @Inject constructor(
     override fun getPostingById(id: Long): Single<Posting> =
         postingService.getPostingById(id)
 
+    override fun getMyPosting(): Single<List<Posting>> {
+        return postingService.getMyPosting()
+    }
+
     override fun deletePosting(id: Long): Single<String> =
         postingService.deletePosting(id).map { "게시물을 삭제했습니다." }
 

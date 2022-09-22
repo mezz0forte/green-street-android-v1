@@ -148,7 +148,7 @@ class MapFragment :
 
     private fun setHomePostingRecyclerView() {
         homePostingAdapter = HomePostAdapter { latlng ->
-            val cameraUpdate = CameraUpdate.scrollAndZoomTo(latlng, 10.0).animate(CameraAnimation.Easing)
+            val cameraUpdate = CameraUpdate.scrollAndZoomTo(latlng, 20.0).animate(CameraAnimation.Easing)
             naverMap.moveCamera(cameraUpdate)
         }
         binding.rvHomePosting.adapter = homePostingAdapter

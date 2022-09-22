@@ -38,6 +38,10 @@ class DetailPostViewModel @Inject constructor(
             )
     }
 
+    fun onClickAddSolution() {
+        viewEvent(EVENT_ADD_SOLUTION)
+    }
+
     fun onClickBack() {
         viewEvent(EVENT_ON_CLICK_BACK)
     }
@@ -49,5 +53,6 @@ class DetailPostViewModel @Inject constructor(
     companion object {
         const val EVENT_ON_CLICK_BACK = 0
         const val EVENT_ON_CLICK_SOLUTION = 1
+        const val EVENT_ADD_SOLUTION = 2
     }
 }
