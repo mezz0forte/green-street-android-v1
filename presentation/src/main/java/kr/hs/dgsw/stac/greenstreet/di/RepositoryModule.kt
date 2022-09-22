@@ -34,4 +34,9 @@ class RepositoryModule {
     @Singleton
     fun provideUserRepository(retrofit: Retrofit): UserRepository =
         UserRepositoryImpl(retrofit.service())
+
+    @Provides
+    @Singleton
+    fun provideAuthRepository(retrofit: Retrofit): AuthRepository =
+        AuthRepositoryImpl(retrofit.service())
 }
