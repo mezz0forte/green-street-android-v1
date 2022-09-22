@@ -87,7 +87,7 @@
     </fragment>
     <fragment
         android:id="@+id/rankFragment"
-        android:name="kr.hs.dgsw.stac.greenstreet.features.rank.RankFragment"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.rank.view.RankFragment"
         android:label="RankFragment" />
     <fragment
         android:id="@+id/detailResolvedPostFragment"

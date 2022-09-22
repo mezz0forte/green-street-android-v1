@@ -1,4 +1,4 @@
-package kr.hs.dgsw.stac.greenstreet.features.rank
+package kr.hs.dgsw.stac.greenstreet.features.rank.vm
 
 import kr.hs.dgsw.stac.greenstreet.base.BaseViewModel
 

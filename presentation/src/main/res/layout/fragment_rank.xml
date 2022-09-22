@@ -4,25 +4,331 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
-            type="kr.hs.dgsw.stac.greenstreet.features.rank.RankViewModel" />
+            type="kr.hs.dgsw.stac.greenstreet.features.rank.vm.RankViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/main">
 
-        <include
-            android:id="@+id/btn_back"
-            layout="@layout/item_back_button"
-            android:onClick="@{() -> vm.onClickBack()}"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@color/color_base_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="16dp"
+                android:onClick="@{() -> vm.onClickBack()}"
+                android:src="@drawable/ic_btn_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_title_detail_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_regular"
+                android:includeFontPadding="false"
+                android:text="랭킹"
+                android:textColor="@color/color_black_text"
+                android:textSize="@dimen/title5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/noto_bold"
+            android:includeFontPadding="false"
+            android:text="구지면 동네 랭킹"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_top_bar" />
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/iv_rank_one_profile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/ic_profile_default"
+            app:layout_constraintBottom_toTopOf="@id/layout_rank_one"
+            app:layout_constraintEnd_toEndOf="@id/layout_rank_one"
+            app:layout_constraintStart_toStartOf="@id/layout_rank_one" />
+
+        <TextView
+            android:id="@+id/tv_rank_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_regular"
+            android:includeFontPadding="false"
+            android:text="초록새싹"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title5"
+            app:layout_constraintBottom_toTopOf="@id/layout_rank_one"
+            app:layout_constraintEnd_toEndOf="@id/iv_rank_one_profile"
+            app:layout_constraintStart_toStartOf="@id/iv_rank_one_profile"
+            app:layout_constraintTop_toBottomOf="@id/iv_rank_one_profile" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_rank_one"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:background="@drawable/background_rank_card"
+            android:backgroundTint="#FF9494"
+            app:layout_constraintBottom_toTopOf="@id/layout_rank_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_bold"
+                android:includeFontPadding="false"
+                android:text="1"
+                android:textColor="@color/white"
+                android:textSize="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/iv_rank_two_profile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/dummy"
+            app:layout_constraintBottom_toTopOf="@id/layout_rank_two"
+            app:layout_constraintEnd_toEndOf="@id/layout_rank_two"
+            app:layout_constraintStart_toStartOf="@id/layout_rank_two" />
+
+        <TextView
+            android:id="@+id/tv_rank_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_regular"
+            android:includeFontPadding="false"
+            android:text="금현호"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title5"
+            app:layout_constraintBottom_toTopOf="@id/layout_rank_two"
+            app:layout_constraintEnd_toEndOf="@id/iv_rank_two_profile"
+            app:layout_constraintStart_toStartOf="@id/iv_rank_two_profile"
+            app:layout_constraintTop_toBottomOf="@id/iv_rank_two_profile" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_rank_two"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="28dp"
+            android:background="@drawable/background_rank_card"
+            android:backgroundTint="#348EFF"
+            app:layout_constraintBottom_toTopOf="@id/layout_rank_list"
+            app:layout_constraintStart_toEndOf="@id/layout_rank_one">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_bold"
+                android:includeFontPadding="false"
+                android:text="2"
+                android:textColor="@color/white"
+                android:textSize="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/iv_rank_three_profile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/siba"
+            app:layout_constraintBottom_toTopOf="@id/layout_rank_three"
+            app:layout_constraintEnd_toEndOf="@id/layout_rank_three"
+            app:layout_constraintStart_toStartOf="@id/layout_rank_three" />
+
+        <TextView
+            android:id="@+id/tv_rank_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_regular"
+            android:includeFontPadding="false"
+            android:text="금현호"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title5"
+            app:layout_constraintBottom_toTopOf="@id/layout_rank_three"
+            app:layout_constraintEnd_toEndOf="@id/iv_rank_three_profile"
+            app:layout_constraintStart_toStartOf="@id/iv_rank_three_profile"
+            app:layout_constraintTop_toBottomOf="@id/iv_rank_three_profile" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_rank_three"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="28dp"
+            android:background="@drawable/background_rank_card"
+            android:backgroundTint="@color/color_prize"
+            app:layout_constraintBottom_toTopOf="@id/layout_rank_list"
+            app:layout_constraintEnd_toStartOf="@id/layout_rank_one">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_bold"
+                android:includeFontPadding="false"
+                android:text="3"
+                android:textColor="@color/white"
+                android:textSize="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_rank_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="rank" />
+            android:layout_height="0dp"
+            android:background="@drawable/background_rank_frame"
+            app:layout_constraintBottom_toTopOf="@id/card_my_rank"
+            app:layout_constraintDimensionRatio="W, 1:1.3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_rank"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_rank" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_my_rank"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="20dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_title_my_rank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/noto_regular"
+                    android:includeFontPadding="false"
+                    android:text="내 랭킹"
+                    android:textColor="@color/color_black_text"
+                    android:textSize="@dimen/title4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title_my_rank">
+
+                    <TextView
+                        android:id="@+id/tv_rank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_regular"
+                        android:includeFontPadding="false"
+                        android:text="6"
+                        android:textColor="@color/color_black"
+                        android:textSize="@dimen/title3"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.mikhaellopez.circularimageview.CircularImageView
+                        android:id="@+id/iv_rank_profile"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginStart="10dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/dummy"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tv_rank"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/noto_regular"
+                        android:includeFontPadding="false"
+                        android:text="까까내놔"
+                        android:textColor="@color/color_black_text"
+                        android:textSize="@dimen/title6"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_rank_profile"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_regular"
+                        android:includeFontPadding="false"
+                        android:text="환경지킴이"
+                        android:textColor="@color/color_gray_text700"
+                        android:textSize="@dimen/title5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
