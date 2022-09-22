@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="user"
+            type="kr.hs.dgsw.stac.domain.model.user.User" />
+
+        <variable
             name="vm"
             type="kr.hs.dgsw.stac.greenstreet.features.myinfo.vm.MyInfoViewModel" />
 
@@ -69,7 +73,7 @@
                     app:layout_constraintDimensionRatio="1:0.7"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_rank"
@@ -184,7 +188,8 @@
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintVertical_chainStyle="packed" />
 
-                            <ImageView
+                            <com.mikhaellopez.circularimageview.CircularImageView
+                                profileImage="@{user.image}"
                                 android:id="@+id/iv_profile"
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
@@ -226,6 +231,7 @@
                                 android:maxLines="3"
                                 android:ellipsize="end"
                                 tools:text="금호호현호"
+                                android:text="@{user.nickname}"
                                 android:fontFamily="@font/noto_regular"
                                 android:includeFontPadding="false"
                                 android:textSize="@dimen/title5"
@@ -307,7 +313,7 @@
                                 android:layout_height="wrap_content"
                                 android:maxLines="3"
                                 android:ellipsize="end"
-                                tools:text="해결사"
+                                android:text="그린어린"
                                 android:fontFamily="@font/noto_regular"
                                 android:includeFontPadding="false"
                                 android:textSize="@dimen/title5"

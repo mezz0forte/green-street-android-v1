@@ -29,27 +29,26 @@ class DetailPostFragment : BaseFragment<FragmentDetailPostBinding, DetailPostVie
         bindingViewEvent {
             when (it) {
                 DetailPostViewModel.EVENT_ON_CLICK_BACK -> findNavController().popBackStack()
+
+                DetailPostViewModel.EVENT_ON_CLICK_SOLUTION -> {
+                    viewModel.postingId.value?.let { postingId ->
+                        findNavController().navigate(DetailPostFragmentDirections.actionDetailPostFragmentToDetailResolvedPostFragment(postingId))
+                    }
+                }
             }
         }
     }
 
     private fun observeLiveData() = with(viewModel) {
         posting.observe(this@DetailPostFragment) { posting ->
+            getSolutionByPostingId(posting.id.toInt())
             binding.posting = posting
+            postingId.value = posting.id
             trashImageAdapter.submitList(posting.photoList)
-            
-            binding.solution = Solution(
-                1,
-                "",
-                SolutionType.IMAGE,
-                posting.user,
-                posting,
-                likeCount = 1,
-                commentList = listOf(
-                    Comment(1, "d", posting.user, createdAt = "2022-09-20T18:09:38")
-                ),
-                createdAt = "2022-09-20T18:09:38"
-            )
+        }
+
+        solution.observe(this@DetailPostFragment) { solution ->
+            binding.solution = solution
         }
     }
 

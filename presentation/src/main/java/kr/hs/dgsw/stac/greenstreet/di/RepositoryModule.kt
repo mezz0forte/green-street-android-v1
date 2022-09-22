@@ -13,6 +13,8 @@ import kr.hs.dgsw.stac.domain.repository.PostingRepository
 import kr.hs.dgsw.stac.domain.repository.SolutionRepository
 import retrofit2.Retrofit
 import javax.inject.Singleton
+import kr.hs.dgsw.stac.data.repository.UserRepositoryImpl
+import kr.hs.dgsw.stac.domain.repository.UserRepository
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -30,6 +32,6 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideAuthRepository(retrofit: Retrofit): AuthRepository =
-        AuthRepositoryImpl(retrofit.service())
+    fun provideUserRepository(retrofit: Retrofit): UserRepository =
+        UserRepositoryImpl(retrofit.service())
 }

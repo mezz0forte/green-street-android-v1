@@ -22,4 +22,8 @@ class SolutionRepositoryImpl @Inject constructor(
     override fun createSolution(solutionRequest: SolutionRequest): Single<Unit> {
         return solutionService.createSolution(solutionRequest)
     }
+
+    override fun getSolutionByPostingId(postingId: Int): Single<Solution> {
+        return solutionService.getSolutionByPostingId(postingId)
+    }
 }
