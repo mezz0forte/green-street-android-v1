@@ -15,5 +15,7 @@ interface PostingRepository {
 
     fun deletePosting(id: Long): Single<String>
 
+    fun createPostingSympathy(postingId: Int): Single<String>
+
     fun updatePosting(id: Long, updatePostingRequest: UpdatePostingRequest): Single<String>
 }

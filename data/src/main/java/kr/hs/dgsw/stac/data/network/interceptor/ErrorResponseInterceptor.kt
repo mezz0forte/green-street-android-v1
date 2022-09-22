@@ -1,5 +1,6 @@
 package kr.hs.dgsw.stac.data.network.interceptor
 
+import android.util.Log
 import okhttp3.Interceptor
 
 class ErrorResponseInterceptor : Interceptor {
@@ -12,6 +13,8 @@ class ErrorResponseInterceptor : Interceptor {
 
         val request = chain.request()
         val response = chain.proceed(request)
+
+        Log.d("TAGTAGTAG", response.code.toString())
 
         when (response.code) {
             // TODO : 에러 메시지 고치기

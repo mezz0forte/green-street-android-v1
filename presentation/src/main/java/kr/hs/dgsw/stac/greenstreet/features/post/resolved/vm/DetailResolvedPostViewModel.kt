@@ -3,20 +3,20 @@ package kr.hs.dgsw.stac.greenstreet.features.post.resolved.vm
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kr.hs.dgsw.stac.domain.model.solution.Solution
-import kr.hs.dgsw.stac.domain.usecase.solution.GetSolutionByIdUseCase
+import kr.hs.dgsw.stac.domain.usecase.solution.GetSolutionById
 import kr.hs.dgsw.stac.greenstreet.base.BaseViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class DetailResolvedPostViewModel @Inject constructor(
-    private val getSolutionByIdUseCase: GetSolutionByIdUseCase
+    private val getSolutionById: GetSolutionById
 ) : BaseViewModel() {
 
     val commentContent = MutableLiveData<String>()
     val solution = MutableLiveData<Solution>()
 
     fun getSolutionById(id: Long) {
-        getSolutionByIdUseCase.execute(id)
+        getSolutionById.execute(id)
             .toObservable()
             .map { data ->
                 solution.value = data

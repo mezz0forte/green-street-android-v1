@@ -9,14 +9,14 @@ import kr.hs.dgsw.stac.domain.usecase.base.SingleUseCase
 import kr.hs.dgsw.stac.domain.usecase.base.UseCaseScheduler
 import javax.inject.Inject
 
-class GetSolutionByIdUseCase @Inject constructor(
+class GetLatestSolution @Inject constructor(
     private val solutionRepository: SolutionRepository,
     useCaseScheduler: UseCaseScheduler? = null,
     logger: Logger? = null
-) : SingleUseCase<Solution, Long>(useCaseScheduler, logger) {
+) : SingleUseCase<List<Solution>, Int>(useCaseScheduler, logger) {
 
-    override fun build(params: Long): Single<Solution> {
-        val netSingle = solutionRepository.getSolutionById(params)
+    override fun build(params: Int): Single<List<Solution>> {
+        val netSingle = solutionRepository.getLatestSolution(params)
         return StatementSingle.ifThen(netSingle)
     }
 }

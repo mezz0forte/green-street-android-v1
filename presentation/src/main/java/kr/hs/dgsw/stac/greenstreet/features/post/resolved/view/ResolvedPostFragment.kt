@@ -35,8 +35,8 @@ class ResolvedPostFragment : BaseFragment<FragmentResolvedPostBinding, ResolvedP
         binding.rvResolvedPost.adapter = solutionAdapter
     }
 
-    override fun onClickContent(id: Long) {
-        val action = ResolvedPostFragmentDirections.actionMainResolvedPostToDetailResolvedPostFragment(id)
+    override fun onClickContent(id: Int) {
+        val action = ResolvedPostFragmentDirections.actionMainResolvedPostToDetailResolvedPostFragment(id.toLong())
         findNavController().navigate(action)
     }
 

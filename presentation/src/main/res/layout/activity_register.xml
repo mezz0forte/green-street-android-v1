@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.stac.greenstreet.features.auth.register.RegisterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/btn_back"
+            android:onClick="@{() -> vm.onClickBack()}"
+            layout="@layout/item_back_button" />
+
+        <EditText
+            android:id="@+id/et_nickname"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:hint="닉네임"
+            android:textColor="@color/black"
+            android:textColorHint="@color/color_gray"
+            app:layout_constraintTop_toBottomOf="@id/btn_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:hint="전화번호"
+            android:textColor="@color/black"
+            android:textColorHint="@color/color_gray"
+            app:layout_constraintTop_toBottomOf="@id/et_nickname"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/et_pw"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:hint="비밀번호"
+            android:textColor="@color/black"
+            android:textColorHint="@color/color_gray"
+            app:layout_constraintTop_toBottomOf="@id/et_phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/et_rpw"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:hint="비밀번호 재입력"
+            android:textColor="@color/black"
+            android:textColorHint="@color/color_gray"
+            app:layout_constraintTop_toBottomOf="@id/et_pw"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="@{() -> vm.onClickRegister()}"
+            android:text="회원가입" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
