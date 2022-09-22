@@ -16,13 +16,23 @@ class MyInfoFragment : BaseFragment<FragmentMyInfoBinding, MyInfoViewModel>(R.la
     private lateinit var myPostingAdapter: MyPostingAdapter
 
     override fun start() {
+        observeLiveData()
         settingMyPostingAdapter()
+        viewModel.getMyInfo()
 
         bindingViewEvent {
             when (it) {
                 MyInfoViewModel.EVENT_ON_CLICK_BACK -> findNavController().popBackStack()
             }
         }
+    }
+
+    private fun observeLiveData() = with(viewModel) {
+
+        user.observe(this@MyInfoFragment) {
+            binding.user = it
+        }
+
     }
 
     private fun settingMyPostingAdapter() {

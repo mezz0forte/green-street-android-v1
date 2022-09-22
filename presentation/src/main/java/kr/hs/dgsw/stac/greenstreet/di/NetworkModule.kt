@@ -5,14 +5,16 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kr.hs.dgsw.stac.data.network.interceptor.ErrorResponseInterceptor
+import javax.inject.Singleton
 import kr.hs.dgsw.stac.data.util.Constants
+import kr.hs.dgsw.stac.greenstreet.widget.GreenStreetApplication
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -24,12 +26,18 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideHttpClient(): OkHttpClient {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
+    internal fun provideTokenInterceptor(): TokenInterceptor = TokenInterceptor()
+
+    @Provides
+    @Singleton
+    fun provideHttpClient(tokenInterceptor: TokenInterceptor): OkHttpClient {
+        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         //val errorResponseInterceptor = ErrorResponseInterceptor()
+
         val okhttpBuilder = OkHttpClient().newBuilder()
-            .addInterceptor(interceptor)
+            .addInterceptor(httpLoggingInterceptor)
+            .addInterceptor(tokenInterceptor)
         //    .addInterceptor(errorResponseInterceptor)
 
         return okhttpBuilder.build()
@@ -44,4 +52,17 @@ class NetworkModule {
             .baseUrl(Constants.BASE_URL)
             .client(okHttpClient)
             .build()
+
+
+    class TokenInterceptor : Interceptor {
+
+        override fun intercept(chain: Interceptor.Chain): Response = with(chain) {
+            val accessToken = GreenStreetApplication.prefs.getAccessToken()
+            val newRequest = request().newBuilder()
+                .addHeader("Authorization", "Bearer $accessToken")
+                .build()
+
+            proceed(newRequest)
+        }
+    }
 }
