@@ -30,5 +30,4 @@ interface SolutionService {
     fun getSolutionByPostingId(
         @Path("id") postingId: Int
     ): Single<Solution>
-
 }

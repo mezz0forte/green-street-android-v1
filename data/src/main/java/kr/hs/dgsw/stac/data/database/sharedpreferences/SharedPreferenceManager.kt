@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 
 class SharedPreferenceManager(context: Context) {
 
-
     private val prefs: SharedPreferences = context.getSharedPreferences("green_street_prefs", Context.MODE_PRIVATE)
 
     fun setAccessToken(accessToken: String) {

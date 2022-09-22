@@ -21,10 +21,10 @@ class ResolvedPostViewModel @Inject constructor(
     fun getLatestSolution() {
         getLatestSolution.execute(page.value ?: 1)
             .toObservable()
-            .subscribe( { data ->
+            .subscribe({ data ->
                 solutionList.value = data
             }, { error ->
                 onError.value = error
-            } )
+            })
     }
 }

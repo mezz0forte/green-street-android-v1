@@ -4,9 +4,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
-import kr.hs.dgsw.stac.domain.model.comment.Comment
-import kr.hs.dgsw.stac.domain.model.solution.Solution
-import kr.hs.dgsw.stac.domain.model.solution.SolutionType
 import kr.hs.dgsw.stac.greenstreet.R
 import kr.hs.dgsw.stac.greenstreet.base.BaseFragment
 import kr.hs.dgsw.stac.greenstreet.databinding.FragmentDetailPostBinding
@@ -24,7 +21,6 @@ class DetailPostFragment : BaseFragment<FragmentDetailPostBinding, DetailPostVie
         viewModel.getPostingById(args.postingId)
         observeLiveData()
         setTrashImageAdapter()
-
 
         bindingViewEvent {
             when (it) {
@@ -57,5 +53,4 @@ class DetailPostFragment : BaseFragment<FragmentDetailPostBinding, DetailPostVie
         binding.vpTreshImage.adapter = trashImageAdapter
         binding.indicatorTrashImage.attachTo(binding.vpTreshImage)
     }
-
 }

@@ -13,5 +13,4 @@ interface SolutionRepository {
     fun createSolution(solutionRequest: SolutionRequest): Single<Unit>
 
     fun getSolutionByPostingId(postingId: Int): Single<Solution>
-
 }

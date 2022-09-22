@@ -22,5 +22,4 @@ data class Solution(
 
     val commentsCount: String
         get() { return commentList.size.toString() }
-
 }

@@ -12,6 +12,4 @@ object TrashImageDiffUtilCallback : DiffUtil.ItemCallback<Photo>() {
     override fun areContentsTheSame(oldItem: Photo, newItem: Photo): Boolean {
         return oldItem.id == newItem.id
     }
-
-
 }
