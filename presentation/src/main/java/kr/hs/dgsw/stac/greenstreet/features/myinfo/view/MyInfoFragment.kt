@@ -19,6 +19,7 @@ class MyInfoFragment : BaseFragment<FragmentMyInfoBinding, MyInfoViewModel>(R.la
         observeLiveData()
         settingMyPostingAdapter()
         viewModel.getMyInfo()
+        viewModel.getMyPosting()
 
         bindingViewEvent {
             when (it) {
@@ -32,6 +33,12 @@ class MyInfoFragment : BaseFragment<FragmentMyInfoBinding, MyInfoViewModel>(R.la
         user.observe(this@MyInfoFragment) {
             binding.user = it
         }
+
+        myPosting.observe(this@MyInfoFragment) {
+            binding.tvPostingCount.text = it.size.toString()
+            myPostingAdapter.submitList(it)
+        }
+
     }
 
     private fun settingMyPostingAdapter() {

@@ -28,6 +28,7 @@ import kr.hs.dgsw.stac.domain.usecase.solution.SolutionUseCases
 import kr.hs.dgsw.stac.domain.usecase.user.GetMyInfo
 import kr.hs.dgsw.stac.domain.usecase.user.UserUseCases
 import javax.inject.Singleton
+import kr.hs.dgsw.stac.domain.usecase.posting.GetMyPosting
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -42,7 +43,8 @@ class UseCaseModule {
             getPostingById = GetPostingById(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
             deletePosting = DeletePosting(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
             updatePosting = UpdatePosting(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
-            createPostingSympathy = CreatePostingSympathy(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger)
+            createPostingSympathy = CreatePostingSympathy(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
+            getMyPosting = GetMyPosting(postingRepository, UseCaseScheduler(Schedulers.io(), postScheduler), logger),
 
         )
 

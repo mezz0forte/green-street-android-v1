@@ -7,5 +7,6 @@ data class PostingUseCases(
     val deletePosting: DeletePosting,
     val updatePosting: UpdatePosting,
     val createPostingSympathy: CreatePostingSympathy,
+    val getMyPosting: GetMyPosting,
 
 )
