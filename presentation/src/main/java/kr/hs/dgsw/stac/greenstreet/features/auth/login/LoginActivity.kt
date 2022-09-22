@@ -1,6 +1,7 @@
 package kr.hs.dgsw.stac.greenstreet.features.auth.login
 
 import android.content.Intent
+import android.util.Log
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kr.hs.dgsw.stac.domain.model.user.Login
@@ -8,11 +9,11 @@ import kr.hs.dgsw.stac.greenstreet.R
 import kr.hs.dgsw.stac.greenstreet.base.BaseActivity
 import kr.hs.dgsw.stac.greenstreet.databinding.ActivityLoginBinding
 import kr.hs.dgsw.stac.greenstreet.features.auth.register.RegisterActivity
+import kr.hs.dgsw.stac.greenstreet.features.main.MainActivity
 
 @AndroidEntryPoint
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layout.activity_login) {
     override val viewModel: LoginViewModel by viewModels()
-
     override fun start() {
 
         observeLiveData()
@@ -37,7 +38,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
 
     private fun observeLiveData() = with(viewModel) {
         token.observe(this@LoginActivity) {
-
+            Log.d("TAGTAG", token.value!!.access_token)
+            val intent = Intent(applicationContext, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }
