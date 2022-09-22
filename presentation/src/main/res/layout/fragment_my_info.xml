@@ -130,7 +130,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:text="4등" />
+                        android:text="4등" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

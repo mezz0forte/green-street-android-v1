@@ -76,6 +76,14 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/detailPostFragment" />
+        <action
+            android:id="@+id/action_detailPostFragment_to_addSolutionFragment"
+            app:destination="@id/addSolutionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/detailPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/rankFragment"
@@ -87,6 +95,15 @@
         android:label="DetailResolvedPostFragment" >
         <argument
             android:name="id"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
+    <fragment
+        android:id="@+id/addSolutionFragment"
+        android:name="kr.hs.dgsw.stac.greenstreet.features.solution.view.AddSolutionFragment"
+        android:label="AddSolutionFragment" >
+        <argument
+            android:name="postingId"
             app:argType="long"
             android:defaultValue="-1L" />
     </fragment>
